@@ -1,0 +1,2 @@
+# Aprendizados da Semana
+Nesta primeira semana na Labenu, chamada de **Onboarding**, aprendi sobre a própria Labenu, conheci várias pessoas novas (fiz até uma amiguinha), aprendi a me comunicar com o computador através do terminal (Git Bash) e aprendi o que são os tais Pull Requests.
