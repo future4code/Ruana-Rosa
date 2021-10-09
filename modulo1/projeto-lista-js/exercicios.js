@@ -108,17 +108,28 @@ function checaRenovacaoRG() {
   const anoNasceu = Number(prompt("Ano nascimento"))
   const anoEmitiu = Number(prompt("Ano de emissão do RG"))
   const idadee = anoHoje - anoNasceu
-  //terminar depois
+  const tempoRg = anoHoje - anoEmitiu
+  const renovaMenos20 = idadee <= 20 && tempoRg >= 5
+  const renova20a50 = idadee > 20 && idadee <= 50 && tempoRg >= 10
+  const renovaMais50 = idadee > 20 && tempoRg >= 15
+  console.log(renovaMenos20 || renova20a50 || renovaMais50)
 }
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
-  // implemente sua lógica aqui
+  const multiplo400  = ano % 400 === 0
+  const multiplo4 = ano % 4 === 0 
+  const multiplo100 = ano % 100 === 0 
+  
+  return multiplo400 || (multiplo4 && !multiplo100) 
+  //DEPOIS
 
 }
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
-  // implemente sua lógica aqui
-
+  const mais18 = prompt("Você tem mais de 18 anos?")
+  const ensinoMedio = prompt("Você possui ensino médio completo?")
+  const disponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
+  console.log(mais18.includes("sim") && ensinoMedio.includes("sim") && disponibilidade.includes("sim"))
 }
