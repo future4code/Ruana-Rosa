@@ -58,12 +58,37 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+  /*  let maiorNumero = Number()
+    let menorNumero = Number()
+    let achaMaiorNumero = function(num1,num2){
+        if (num1>num2){
+            maiorNumero=num1
+            menorNumero=num2
+        } else{
+            maiorNumero=num2
+            menorNumero=num1
+        }
+        return achaMaiorNumero()
+    }
+    let maiorDivisivelPorMenor = function(num1,num2){
+        maiorNumero%menorNumero===0
+        return maiorDivisivelPorMenor
+    }
+    let diferenca = maiorNumero-menorNumero
+    return objetoEntreDoisNumeros={
+        maiorNumero: maiorNumero.value,
+        maiorDivisivelPorMenor: maiorDivisivelPorMenor.value,
+        diferenca: diferenca.value
+     } */
 }
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+    let primeirosPares = []
+    for (let i = 0; primeirosPares.length < n; i += 2) {
+        primeirosPares.push(i);
+    }
+    return primeirosPares;
 }
 
 // EXERCÍCIO 09
