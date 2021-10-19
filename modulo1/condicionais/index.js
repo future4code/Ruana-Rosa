@@ -82,78 +82,86 @@
 //2.
     const nomeCompleto = prompt("Digite seu nome completo")
     const tipoJogo = prompt("Digite 'IN' se o jogo for internacional e 'DO' de for doméstico").toUpperCase()
-    const etapaJogo = prompt("Digite 'SF' se for assistir à semifinal, 'DT' se for a decisão do 3º lugar e 'FI' se for a final").toUpperCase()
-    let etapa = (etapaJogo) =>{ 
+    let etapaJogo = prompt("Digite 'SF' se for assistir à semifinal, 'DT' se for a decisão do 3º lugar e 'FI' se for a final").toUpperCase()
+    let categoriaJogo = prompt("Escolha entre as categorias 1, 2, 3 ou 4") 
+    let quantidadeIngressos = Number(prompt("Quantos ingressos deseja comprar?"))
+    let valorDoIngresso = Number()
+    let valorUnitario = Number()
+    let valorTotal = Number()
+    
+    
+    let etapa
+
+    function etapaDoJogo(etapaJogo){ 
         if (etapaJogo==="SF"){
-            let etapa = "Semifinal" 
+            etapa = "Semifinal" 
         }
         else if(etapaJogo ==="DT"){
-            let etapa = "Decisão do 3º lugar"
+            etapa = "Decisão do 3º lugar"
         }
         else if(etapaJogo==="FI"){
-            let etapa = "Final"
+            etapa = "Final"
         }
     }
-    const categoriaJogo = prompt("Escolha entre as categorias 1, 2, 3 ou 4")
-    const quantidadeIngressos = Number(prompt("Quantos ingressos deseja comprar?"))
-    let valorDoIngresso = 0
+    etapaDoJogo(etapaJogo)
+   
     function calcularUnitario(etapaJogo, categoriaJogo){
-        if(etapaJogo==="SF" && categoriaJogo === 1){
-            let valorDoIngresso = 1320
+        if (etapaJogo==="SF" && categoriaJogo === 1){
+            valorDoIngresso = Number(1320)
         }
-        else if(etapaJogo==="SF" && categoriaJogo===2){
-            let valorDoIngresso = 880
+        else if (etapaJogo==="SF" && categoriaJogo=== 2){
+            valorDoIngresso =  Number(880)
         }
-        else if(etapaJogo==="SF" && categoriaJogo===3){
-            let valorDoIngresso = 550
+        else if (etapaJogo==="SF" && categoriaJogo=== 3){
+            valorDoIngresso =  Number(550)
         }
-        else if(etapaJogo==="SF" && categoriaJogo===4){
-            let valorDoIngresso = 220
+        else if (etapaJogo==="SF" && categoriaJogo=== 4){
+            valorDoIngresso =  Number(220)
         }
-        else if(etapaJogo==="DT" && categoriaJogo===1){
-            let valorDoIngresso = 660
+        else if (etapaJogo==="DT" && categoriaJogo=== 1){
+            valorDoIngresso =  Number(660)
         } 
-        else if(etapaJogo==="DT" && categoriaJogo===2){
-            let valorDoIngresso = 440
+        else if (etapaJogo==="DT" && categoriaJogo=== 2){
+            valorDoIngresso =  Number(440)
         }
-        else if(etapaJogo==="DT" && categoriaJogo===3){
-            let valorDoIngresso = 330
+        else if (etapaJogo==="DT" && categoriaJogo=== 3){
+            valorDoIngresso =  Number(330)
         }
-        else if(etapaJogo==="DT" && categoriaJogo===4){
-            let valorDoIngresso = 170
+        else if (etapaJogo==="DT" && categoriaJogo=== 4){
+            valorDoIngresso =  Number(170)
         }
-        else if(etapaJogo==="FI" && categoriaJogo===1){
-            let valorDoIngresso = 1980
+        else if (etapaJogo==="FI" && categoriaJogo=== 1){
+            valorDoIngresso = Number(1980)
         } 
-        else if(etapaJogo==="FI" && categoriaJogo===2){
-            let valorDoIngresso = 1320
+        else if(etapaJogo==="FI" && categoriaJogo=== 2){
+            valorDoIngresso = Number(1320)
         } 
-        else if(etapaJogo==="FI" && categoriaJogo===3){
-            let valorDoIngresso = 880
+        else if (etapaJogo==="FI" && categoriaJogo=== 3){
+            valorDoIngresso = Number(880)
         }
-        else if(etapaJogo==="FI" && categoriaJogo===4){
-            let valorDoIngresso = 330
+        else if (etapaJogo==="FI" && categoriaJogo=== 4){
+            valorDoIngresso = Number(330)
         }
+        return valorDoIngresso
     }
     calcularUnitario(etapaJogo,categoriaJogo)
     
-    if(tipoJogo==="DO"){
-        const valorUnitario = valorDoIngresso
-        const valorTotal = (valorUnitario*quantidadeIngressos)
+    if(tipoJogo==="DO"){ 
+        valorUnitario = valorDoIngresso
+        valorTotal = (valorUnitario*quantidadeIngressos)
         console.log("---Dados da compra---") 
         console.log(`Nome do cliente: ${nomeCompleto}`)
         console.log("Tipo de jogo: Nacional")
-        console.log("Etapa do jogo:", etapa)
+        console.log(`Etapa do jogo: ${etapa}`)
         console.log("Categoria:", categoriaJogo)
         console.log(`Quantidade de Ingressos: ${quantidadeIngressos} ingressos`)
         console.log("---Valores---")
         console.log("Valor do ingresso: R$",valorUnitario)
-        console.log("Valor total: R$", valorTotal)
-      
+        console.log("Valor total: R$", valorTotal)  
     } 
-    else if(tipoJogo==="IN"){
-        const valorUnitario = (valorDoIngresso/4.1) 
-        const valorTotal = (valorUnitario*quantidadeIngressos)
+    else if(tipoJogo==="IN"){   
+        valorUnitario = (valorDoIngresso/4.1) 
+        valorTotal = (valorUnitario*quantidadeIngressos)  
         console.log("---Dados da compra---") 
         console.log(`Nome do cliente: ${nomeCompleto}`)
         console.log("Tipo de jogo: Internacional")
