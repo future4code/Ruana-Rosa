@@ -72,6 +72,10 @@ div img {
     color: white;
 }
 
+div#container-de-descricao>p{
+    white-space: pre-line;
+}
+
 #container-de-descricao>ol {
     padding: 15px 0px;
 }
