@@ -25,6 +25,10 @@ button:focus {
     color: white;
 }
 
+button:hover{
+    background-color: #ffd416;
+}
+
 img {
     width: 100px;
 }
