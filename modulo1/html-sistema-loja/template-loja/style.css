@@ -1,0 +1,37 @@
+#cabecalho{
+    background-color: #1A2930;
+    padding: 5%;
+    position:fixed;
+    display: block;
+    height: 80px;
+    width: 100%;
+}
+.texto-preto{
+    color: #0a1612;
+}
+h1{
+    font-size: 80px;
+    
+    color: #F7CE3E;
+}
+#cubo{
+    position: absolute;
+    right: 15%;
+    top: 15%;
+}
+
+#atalhos{
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 2%;
+}
+a:link{
+    color: #0a1612;
+}
+a:visited{
+    color: #505553
+}
+/*
+/*#F7CE3E
+background-color: #C5C1C0;
