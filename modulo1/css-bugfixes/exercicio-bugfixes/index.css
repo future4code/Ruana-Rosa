@@ -50,8 +50,6 @@ div>p:first-child {
     border-radius: 5px;
     font-size: 20px;
     color: white;
-    display: block;
-    position: relative;
 }
 
 .botao-amarelo:hover {
@@ -98,13 +96,7 @@ div#container-de-descricao>p{
     color: #c44f00;
     margin: 0 auto;
     font-size: 60px;
-    text-align: center;
-}
-#botao-amarelo{
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+    
 }
 
 
