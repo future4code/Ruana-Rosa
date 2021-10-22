@@ -65,6 +65,12 @@ div>p:first-child {
     height: 15px;
     width: 15px;
 }
+.icone:hover{
+    opacity: 0.6;
+}
+.icone:active{
+    opacity: 1;
+}
 
 
 /** 
@@ -79,12 +85,11 @@ div>p:first-child {
     color: white;
 }
 
-div#container-de-descricao>p{
-    white-space: pre-line;
-}
+
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin: auto;
 }
 
 #container-para-comprar {
