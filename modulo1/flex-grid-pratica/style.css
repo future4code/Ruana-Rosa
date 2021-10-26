@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+.corpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100vh;
+}
+
+header{
+    display: flex;
+    background-color: purple;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    width: 100%;
+}
+
+h1{
+    color: yellow;
+    margin-left: 50px;
+    font-size: 40pt;
+}
+
+#painel{
+    display: grid;
+    grid-template-rows: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(199, 99, 199);
+    height: 100%;
+    padding: 50px;
+}
+
+.videos{
+    background-color: yellow;
+    width: 20vw;
+}
+
+.foto{
+    width: 100%;
+}
+
+.titulo{
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+#video{
+    width: 70vw;
+    margin: 10px;
+}
+
+.visualizar{
+    width: 100vw;
+    background-color: yellow;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    color: black;
+    margin-top: 10px;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: purple;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: yellow;
+    font-size: 20px;
+}
+
+#video1{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video2{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video3{
+    grid-row: 1/2;
+    grid-column: 3/4;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video4{
+    grid-row: 1/2;
+    grid-column: 4/5;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video5{
+    grid-row: 2/3;
+    grid-column: 1/2;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video6{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video7{
+    grid-row: 2/3;
+    grid-column: 3/4;
+    box-shadow: 5px 5px 5px black;
+}
+
+#video8{
+    grid-row: 2/3;
+    grid-column: 4/5;
+    box-shadow: 5px 5px 5px black;
+}
+
+input{
+    margin-right: 30px;
+}
+
+button{
+    background-color: yellow;
+    color: black;
+    padding: 10px;
+    border: solid 2px black;
+    margin-right: 30px;
+}
