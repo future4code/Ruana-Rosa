@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Styled from 'styled-components'
 import CriarPlaylist from './Components/CriarPlaylist'
+import DetalhesPlaylists from './Components/DetalhesPlaylist'
 import ListaPlaylists from './Components/ListaPlaylists'
 
 
@@ -10,6 +11,7 @@ function App() {
     <div>
       <CriarPlaylist/>
       <ListaPlaylists/>
+      {/* <DetalhesPlaylists/> */}
     </div>
   )
 }

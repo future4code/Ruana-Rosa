@@ -2,6 +2,21 @@ import React from "react";
 import axios from 'axios'
 import Styled from 'styled-components'
 
+const CardPlaylist = Styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 50vw;
+    padding: 10px;
+    margin: 10px;
+`
+const ContainerPlaylists = Styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    `
 
 export default class ListaPlaylists extends React.Component{
     state = {
@@ -48,17 +63,20 @@ export default class ListaPlaylists extends React.Component{
     render() {
         const listaDasPlaylists = this.state.playlists.map((item) => {
             return(
-                <div key={item.id}>
+                <CardPlaylist key={item.id}>
                     {item.name}
-                    <button onClick={() => this.deletarPlaylist(item.id)}>DELETAR</button>
-                </div>
+                   <div>
+                        <button>VER PLAYLIST</button>
+                        <button onClick={() => this.deletarPlaylist(item.id)}>DELETAR</button>
+                    </div>
+                </CardPlaylist>
             )
         })
         return(
-            <div>
+            <ContainerPlaylists>
                 <h2>Nossas Playlists</h2>
                 {listaDasPlaylists}
-            </div>
+            </ContainerPlaylists>
         )
     }
 } 
