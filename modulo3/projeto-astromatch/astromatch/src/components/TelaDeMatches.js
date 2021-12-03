@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import blackHole from '../img/blackHole01.png';
 
 const CardMatch = styled.div`
 display: flex;
@@ -11,6 +12,9 @@ border: 2px solid yellow;
 color: white;
 margin-bottom: 15px;
 padding-right: 15px;
+p{
+    font-size: 2em;
+}
 img{
     height: 100px;
     width: 100px;
@@ -18,7 +22,18 @@ img{
     margin-left: 15px;
     margin-right: 15px;
 }
-
+`
+const ContainerMatches = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 60vw;
+height: 100%;
+position: relative;
+top: -80px;
+img{
+    max-width: 65%;
+}
 `
 
 export function TelaDeMatches(){
@@ -37,7 +52,7 @@ export function TelaDeMatches(){
             setListaMatches(res.data.matches)
             setNome(res.data.profile.name)
             setFoto(res.data.profile.photo)
-            setPerfil(res.data.perfil)
+           setPerfil(res.data.profile)
         })
         .catch((err)=>{
             alert(`Pane no sistema, alguém me desconfigurou`)
@@ -50,15 +65,16 @@ export function TelaDeMatches(){
     const mostrarMatches = listaMatches.map((match) =>{
         return(
             <CardMatch>
-                
                 <img src={match.photo}/>
-                <h4>{match.name}</h4>
+                <p>{match.name}</p>
             </CardMatch>
         )
     })
     return(
-        <div>
-            {mostrarMatches}
-        </div>
+        <ContainerMatches>
+            {mostrarMatches.length ===0?
+            <img src={blackHole} /> :
+            <>{mostrarMatches}</>}
+        </ContainerMatches>
     )
 }
