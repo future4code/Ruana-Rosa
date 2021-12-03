@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+# Projeto AstroMatch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi realizado utilizando o React [Create React App](https://github.com/facebook/create-react-app), com a API ASTRO MATCH, desenvolvida pela Labenu.
+O ASTR🪐MATCH pode ser encontrado no link: (https://enchanted-discovery.surge.sh/)
 
-## Available Scripts
+## Sobre o projeto
 
-In the project directory, you can run:
+A proposta era criar um site de relacionamentos, com um mecanismo semelhante ao Tinder, com o nome AstroMatch. 
+Já que todo o funcionamento do site é relacionado ao "match", resolvi fazer o layout combinando com o tema espacial, em homenagem ao nosso amigo AstroDev. E, como esses sites de relacionamento de certa forma se parecem com um jogo de curtir/ descurtir pessoas, achei pertinente me inspirar nos videogames antigos. Procurei fazer toda a comunicação de forma mais gráfica e não-verbal, então tem poucas coisas escritas no site.
 
-### `npm start`
+## Sobre os recursos utilizados
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Todas as imagens do site foram encontradas em sites de troca de imagens em pixel art.
+O logotipo foi criado usando a plataforma [Canva] (https://www.canva.com/pt_br/). 
+A fonte escolhida foi a [Monogram] (https://datagoblin.itch.io/monogram), pois era a que mais se adequava à proposta de layout. É uma fonte gratuita, de uso livre e com licença Creative Commons CC0.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

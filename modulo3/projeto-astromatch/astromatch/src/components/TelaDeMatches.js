@@ -32,16 +32,14 @@ position: relative;
 top: -80px;
 overflow:auto;
 ::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #d51f5e;        /* color of the tracking area */
+  background: #d51f5e;
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: black;    /* color of the scroll thumb */
-  border: 3px solid #d51f5e;  /* creates padding around scroll thumb */
+  background-color: black;    
+  border: 3px solid #d51f5e;  
 }
 img{
     max-width: 65%;
@@ -58,48 +56,43 @@ p{
 }
 `
 
-export function TelaDeMatches(){
+export function TelaDeMatches() {
     const [listaMatches, setListaMatches] = useState([])
-    const [foto, setFoto] = useState("")
-    const [nome, setNome] = useState("")
-    const [perfil, setPerfil] = useState("")
+    
     const aluno = "ruana-piber-carver"
 
-
-    const getMatches = () =>{
+    const getMatches = () => {
         const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${aluno}/matches`
         axios.get(url)
-        .then((res)=>{
-            console.log(res)
-            setListaMatches(res.data.matches)
-            setNome(res.data.profile.name)
-            setFoto(res.data.profile.photo)
-           setPerfil(res.data.profile)
-        })
-        .catch((err)=>{
-            alert(`Pane no sistema, alguém me desconfigurou`)
-        })
+            .then((res) => {
+                console.log(res)
+                setListaMatches(res.data.matches)
+            })
+            .catch((err) => {
+                alert(`Pane no sistema, alguém me desconfigurou`)
+                console.log(err.data)
+            })
     }
     useEffect(() => {
         getMatches()
     }, [])
 
-    const mostrarMatches = listaMatches.map((match) =>{
-        return(
+    const mostrarMatches = listaMatches.map((match) => {
+        return (
             <CardMatch>
-                <img src={match.photo}/>
+                <img src={match.photo} />
                 <p>{match.name}</p>
             </CardMatch>
         )
     })
-    return(
+    return (
         <ContainerMatches>
-            {mostrarMatches.length ===0?
-            <ZeroMatches>
-            <img src={blackHole} /> 
-            <p>0 matches</p>
-            </ZeroMatches>:
-            <>{mostrarMatches}</>}
+            {mostrarMatches.length === 0 ?
+                <ZeroMatches>
+                    <img src={blackHole} />
+                    <p>0 matches</p>
+                </ZeroMatches> :
+                <>{mostrarMatches}</>}
         </ContainerMatches>
     )
 }

@@ -5,8 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import coracao from '../img/coracao.png';
 import avanco from '../img/avanco-rapido.png';
-import foguete from '../img/foguete.png'
-
+import foguete from '../img/foguete.png';
 
 const BotoesEDados = styled.div`
 display: flex;
@@ -30,7 +29,6 @@ p{
 const Botoes = styled.img`
 height: 100px;
 `
-
 const NomeEIdade = styled.h2`
 color: #ffdc00;
 text-align: center;
@@ -38,7 +36,6 @@ font-size: 32px;
 margin-bottom: 10px;
 font-weight: normal;
 `
-
 const Carregando = styled.div`
 display: flex;
 flex-direction: column;
@@ -52,7 +49,6 @@ img{
 
 }
 `
-
 const ContainerPerfil = styled.div`
 color: white;
 display: flex;
@@ -92,8 +88,6 @@ const FundoFoto = styled.img`
     filter: blur(10px);
 
 `
-
-
 
 export function TelaInicial() {
     const [perfil, setPerfil] = useState("")
@@ -147,7 +141,7 @@ export function TelaInicial() {
                 setEscolha(true)
                 getProfileToChoose()
             }).catch((err) => {
-                alert("Pane no sistema, alguém me desconfigurou")
+                alert("Há algo errado")
             })
     }
 
