@@ -1,7 +1,7 @@
 # Projeto AstroMatch
 
 Este projeto foi realizado utilizando o React [Create React App](https://github.com/facebook/create-react-app), com a API ASTRO MATCH, desenvolvida pela Labenu.
-O ASTR🪐MATCH pode ser encontrado no link: (https://enchanted-discovery.surge.sh/)
+O ASTR🪐MATCH pode ser encontrado no link: (https://assorted-hearing.surge.sh/)
 
 ## Sobre o projeto
 
