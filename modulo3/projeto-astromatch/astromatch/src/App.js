@@ -43,7 +43,8 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 width: 25vw;
-margin-top: 10px;
+margin-top: 20px;
+margin-bottom: 20px;
 `
 const Restart = styled.img`
 height: 40px;

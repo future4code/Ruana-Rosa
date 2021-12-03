@@ -24,7 +24,7 @@ align-items: center;
 width: 50%;
 p{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 32px;
 }
 `
 const Botoes = styled.img`
@@ -34,8 +34,9 @@ height: 100px;
 const NomeEIdade = styled.h2`
 color: #ffdc00;
 text-align: center;
-font-size: 2.5em;
+font-size: 32px;
 margin-bottom: 10px;
+font-weight: normal;
 `
 
 const Carregando = styled.div`

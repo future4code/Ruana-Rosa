@@ -11,7 +11,7 @@ height: 130px;
 border: 2px solid yellow;
 color: white;
 margin-bottom: 15px;
-padding-right: 15px;
+padding: 15px;
 p{
     font-size: 2em;
 }
@@ -19,7 +19,6 @@ img{
     height: 100px;
     width: 100px;
     object-fit: cover;
-    margin-left: 15px;
     margin-right: 15px;
 }
 `
@@ -27,12 +26,35 @@ const ContainerMatches = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-width: 60vw;
+width: 50vw;
 height: 100%;
 position: relative;
 top: -80px;
+overflow:auto;
+::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #d51f5e;        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;    /* color of the scroll thumb */
+  border: 3px solid #d51f5e;  /* creates padding around scroll thumb */
+}
 img{
     max-width: 65%;
+}
+`
+const ZeroMatches = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+height: 45vw;
+p{
+    font-size: 32px;
 }
 `
 
@@ -73,7 +95,10 @@ export function TelaDeMatches(){
     return(
         <ContainerMatches>
             {mostrarMatches.length ===0?
-            <img src={blackHole} /> :
+            <ZeroMatches>
+            <img src={blackHole} /> 
+            <p>0 matches</p>
+            </ZeroMatches>:
             <>{mostrarMatches}</>}
         </ContainerMatches>
     )
