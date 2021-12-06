@@ -74,7 +74,6 @@ function App() {
     axios.put(url, headers)
       .then((res) => {
         console.log("Here we go again")
-        console.log(res)
       })
       .catch((err) => {
         alert("Isso é muito Black Mirror")

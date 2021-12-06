@@ -66,12 +66,10 @@ export function TelaDeMatches() {
         const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${aluno}/matches`
         axios.get(url)
             .then((res) => {
-                console.log(res)
                 setListaMatches(res.data.matches)              
             })
             .catch((err) => {
                 alert(`Pane no sistema, alguém me desconfigurou`)
-                console.log(err.data)
             })
     }
     useEffect(() => {

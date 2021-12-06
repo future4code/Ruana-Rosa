@@ -149,7 +149,6 @@ export function TelaInicial() {
 
         axios.post(url, body)
             .then((res) => {
-                console.log(res)
                 setEscolha(true)
                 getProfileToChoose()
             }).catch((err) => {
