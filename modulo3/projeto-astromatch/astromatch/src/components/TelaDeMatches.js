@@ -27,10 +27,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 50vw;
-height: 100%;
-position: relative;
-top: -80px;
-overflow:auto;
+height: 80vh;
+margin-top: 65px;
+overflow: auto;
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -50,7 +49,10 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-evenly;
-height: 45vw;
+height: 80vh;
+img{
+    width: 400px;
+}
 p{
     font-size: 32px;
 }
@@ -58,7 +60,6 @@ p{
 
 export function TelaDeMatches() {
     const [listaMatches, setListaMatches] = useState([])
-    
     const aluno = "ruana-piber-carver"
 
     const getMatches = () => {
@@ -66,7 +67,7 @@ export function TelaDeMatches() {
         axios.get(url)
             .then((res) => {
                 console.log(res)
-                setListaMatches(res.data.matches)
+                setListaMatches(res.data.matches)              
             })
             .catch((err) => {
                 alert(`Pane no sistema, alguém me desconfigurou`)

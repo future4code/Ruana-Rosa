@@ -12,5 +12,5 @@ Já que todo o funcionamento do site é relacionado ao "match", resolvi fazer o 
 
 Todas as imagens do site foram encontradas em sites de troca de imagens em pixel art.
 O logotipo foi criado usando a plataforma [Canva] (https://www.canva.com/pt_br/). 
-A fonte escolhida foi a [Monogram] (https://datagoblin.itch.io/monogram), pois era a que mais se adequava à proposta de layout. É uma fonte gratuita, de uso livre e com licença Creative Commons CC0.
+A fonte escolhida foi a Monogram Extended (https://datagoblin.itch.io/monogram), por ser considerada a mais adequada à proposta de layout. É uma fonte gratuita, de uso livre e com licença Creative Commons CC0.
 

@@ -21,10 +21,11 @@ const Corpo = styled.div`
 `
 
 const Logo = styled.img`
-    position: relative;
-    margin-top: 10px;
-    width: 40vw;
-    top: -90px;
+    position: fixed;
+    margin-top: 30px;
+    width: 35vw;
+    top: -40px;
+    z-index: 1;
 `
 
 const ContainerFora = styled.div`
@@ -32,11 +33,11 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-margin-top: 90px;
+margin-top: 20px;
 color: white;
 width: 50vw;
-height: 50vw;
-border: 20px dashed blue;
+height: 35vw;
+border: 15px dashed blue;
 `
 const Jogo = styled.div`
 display: flex;
@@ -44,7 +45,6 @@ flex-direction: row;
 justify-content: space-between;
 width: 25vw;
 margin-top: 20px;
-margin-bottom: 20px;
 `
 const Restart = styled.img`
 height: 40px;
@@ -86,10 +86,10 @@ function App() {
   }
   return (
     <Corpo>
-      <GlobalStyle/>
+      <GlobalStyle />
       <ContainerFora>
-      <Logo src={logo} />
-      {escolherTela()}
+        <Logo src={logo} />
+        {escolherTela()}
       </ContainerFora>
       <Jogo>
         <Restart onClick={clear} src={restart} />
@@ -100,11 +100,3 @@ function App() {
 }
 
 export default App;
-
-
-/*
-----CORES:
-  ROSA: #d51f5e
-  AMARELO: #ffdc00
-
-*/

@@ -1,8 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
- 
-
 const GlobalStyle = createGlobalStyle`
 
 @font-face {
@@ -16,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100vw;
     font-family: 'monogram-extended';
 }
-
 `
 
 export default GlobalStyle
