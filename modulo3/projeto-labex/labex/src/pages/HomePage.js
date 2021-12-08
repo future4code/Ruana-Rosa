@@ -10,6 +10,8 @@ color: white;
 height: 100vh;
 justify-content: center;
 align-items: center;
+font-family: Poppins, sans-serif;
+font-weight: 300;
 `
 const BotoesGrandes = styled.div`
 width: 60vw;

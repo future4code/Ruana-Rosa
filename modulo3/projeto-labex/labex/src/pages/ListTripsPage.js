@@ -9,6 +9,7 @@ flex-direction: column;
 align-items: center;
 background-image: url("https://stsci-opo.org/STScI-01EVVEJ9BCMEXN4Y1S93CR93DD.jpg");
 color: white;
+font-weight: 300;
 `
 const CardViagem = styled.div`
 border: 2px solid white;
