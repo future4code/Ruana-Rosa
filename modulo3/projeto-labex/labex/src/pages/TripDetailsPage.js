@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function TripDetailsPage(){
+export default function TripDetailsPage() {
+ 
     const history = useHistory()
-    const voltar = ()=>{
+    const voltar = () => {
         history.goBack()
     }
-    return(
+    
+    return (
         <div>
             <button onClick={voltar}>Voltar</button>
             <p>Detalhes da Viagem</p>
