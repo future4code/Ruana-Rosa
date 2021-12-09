@@ -2,33 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { BotaoNormal, BotoesNormais, ContainerForm } from "../styles/styles";
 
-const ContainerForm = styled.div`
-background-image: url('https://stsci-opo.org/STScI-01EVT0PB5FFGNBDHKB9TM3RMZ1.png');
-height: 100vh;
-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-`
-const BotoesNormais = styled.div`
-width: 30vw;
-display: flex;
-justify-content: space-between;
-`
-const BotaoNormal = styled.button`
-border: 2px solid white;
-background-color: rgba(0, 0, 0, 0.5);
-color: white;
-width: 10vw;
-height: 5vw;
-&:hover{
-    border: 2px solid black;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-`
+
 export default function ApplicationFormPage() {
     const aluno = 'ruana-piber-carver'
     const [idViagem, setIdViagem] = useState('')

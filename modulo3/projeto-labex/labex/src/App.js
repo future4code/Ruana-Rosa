@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { NomeFirma } from './components/Firma';
 import AdminHomePage from './pages/AdminHomePage';
 import ApplicationFormPage from './pages/ApplicationFormPage';
 import CreateTripPage from './pages/CreateTripPage';
@@ -11,9 +13,11 @@ import GlobalStyle from './styles/globalStyle';
 
 
 function App() {
+  const [idViagem, setIdViagem] = useState('')
   return (
     <BrowserRouter>
     <GlobalStyle/>
+    <NomeFirma/>
       <Switch>
         <Route exact path={'/'}>
           <HomePage/>
@@ -33,9 +37,9 @@ function App() {
         <Route exact path={'/admin/trips/create'}>
           <CreateTripPage/>
         </Route>
-        {/* <Route exact path={`/admin/trips/${id}`}>
+        <Route exact path={`/admin/trips/${idViagem}`}>
           <TripDetailsPage/>
-        </Route> */}
+        </Route>
         <Route>
           <ErrorPage/>
         </Route>

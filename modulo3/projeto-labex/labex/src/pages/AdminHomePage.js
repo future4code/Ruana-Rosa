@@ -1,20 +1,76 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { BotaoNormal, BotoesTres, CardNomeViagem, ContainerPainel } from "../styles/styles";
 
 export default function AdminHomePage() {
+    const [viagens, setViagens] = useState([])
+    const [viagem, setViagem] = useState({})
+    const [idViagem, setIdViagem] = useState('')
     const history = useHistory()
-    const voltar = ()=>{
+    const voltar = () => {
         history.goBack()
     }
-    const irParaCriarViagem=()=>{
+    const irParaCriarViagem = () => {
         history.push('/admin/trips/create')
     }
-    return(
-        <div>
+   
+    const getTrips = () => {
+        const aluno = 'ruana-piber-carver'
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
+        axios.get(url).then((res) => {
+            setViagens(res.data.trips)
+            
+            console.log('funciona')
+        }).catch((err) => {
+            console.log(err.data)
+        })
+    }
+    useEffect(() => {
+        getTrips()
+    }, [])
+    const listaViagens = viagens.map((trip) => {
+        const irParaDetalhes = () => {
+            setIdViagem(trip.id)
+            getTripDetail()
+            history.push(`/admin/trips/${idViagem}`)
+        }
+
+        const getTripDetail = (idViagem) => {
+            const aluno = 'ruana-piber-carver'
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlHUHVWYkJHMHVSTURab0JUZnFLIiwiZW1haWwiOiJydWFuYS5waWJlckBnbWFpbC5jb20iLCJpYXQiOjE2MzkwMDgwNzF9.wNM75qCArYR44HBAr2iUwge1lwEtqJ8mORLCmjgsyhY"
+            const headers = {auth: token}
+            const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trip/${idViagem}`
+            axios.get(url, headers).then((res) => {
+                setViagem(res.data.trip)
+                console.log('funciona')
+            }).catch((err) => {
+                console.log(err.data)
+            })
+        }
+        
+        return (
+            <CardNomeViagem
+                key={idViagem}
+                onClick={() =>irParaDetalhes(history, idViagem)}
+            >
+                <p>{trip.name}</p>
+                <button>X</button>
+            </CardNomeViagem>
+        )
+    })
+    
+    return (
+        <ContainerPainel>
             <p>Painel Administrativo</p>
-            <button onClick={voltar}>Voltar</button>
-            <button onClick={irParaCriarViagem}>Criar Viagem</button>
-            <button>Logout</button>
-        </div>
+            <BotoesTres>
+                <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
+                <BotaoNormal onClick={irParaCriarViagem}>Criar Viagem</BotaoNormal>
+                <BotaoNormal>Logout</BotaoNormal>
+            </BotoesTres>
+            <div>
+                {listaViagens}
+            </div>
+        </ContainerPainel>
     )
 }

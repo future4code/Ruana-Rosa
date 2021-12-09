@@ -2,39 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import styled from "styled-components";
+import { BotaoNormal, BotoesNormais, CardViagem, ContainerLista } from "../styles/styles";
 
-const ContainerLista = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-image: url("https://stsci-opo.org/STScI-01EVVEJ9BCMEXN4Y1S93CR93DD.jpg");
-color: white;
-font-weight: 300;
-`
-const CardViagem = styled.div`
-border: 2px solid white;
-padding: 20px;
-width: 50vw;
-margin-top: 20px;
-background-color: rgba(0, 0, 0, 0.5);
-`
-const BotoesNormais = styled.div`
-width: 30vw;
-display: flex;
-justify-content: space-between;
-`
-const BotaoNormal = styled.button`
-border: 2px solid white;
-background-color: rgba(0, 0, 0, 0.5);
-color: white;
-width: 10vw;
-height: 5vw;
-&:hover{
-    border: 2px solid black;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-`
+
 export default function ListTripsPage() {
     const [viagens, setViagens] = useState([])
     const history = useHistory()
@@ -72,12 +42,14 @@ export default function ListTripsPage() {
     })
     return (
         <ContainerLista>
-            <p>Lista de Viagens</p>
             <BotoesNormais>
-                <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
-                <BotaoNormal onClick={irParaApplication}>Inscrever-se</BotaoNormal>
+                <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
+                <BotaoNormal onClick={irParaApplication}>CANDIDATAR-SE</BotaoNormal>
             </BotoesNormais>
-            {listaTrips}
+            <div>
+                <p>Lista de Viagens</p>
+                {listaTrips}
+            </div>
         </ContainerLista>
     )
 }
