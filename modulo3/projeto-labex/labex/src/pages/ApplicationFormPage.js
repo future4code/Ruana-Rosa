@@ -2,97 +2,123 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { BotaoNormal, BotoesNormais, ContainerForm } from "../styles/styles";
-
+import { BotaoNormal, BotoesNormais, ContainerForm, ContainerInputs } from "../styles/styles";
+import useForm from "../hooks/useForm";
+import { paises } from "../constants/paises";
 
 export default function ApplicationFormPage() {
     const aluno = 'ruana-piber-carver'
     const [idViagem, setIdViagem] = useState('')
-    const [nome, setNome] = useState('')
-    const [Idade, setIdade] = useState('')
-    const [applicationText, setApplicationText] = useState('')
     const [viagens, setViagens] = useState([])
+    const { form, onChange, cleanFields } = useForm({
+        name: '',
+        age: '',
+        applicationText: '',
+        profession: '',
+        country: '',
+    })
     const history = useHistory()
     const voltar = () => {
         history.goBack()
     }
-    // const applyToTrip = ()=>{
-    //     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/${idViagem}/apply`
-    //     const body = {
-    //         "name": {nome},
-    //         "age": {Idade},
-    //         "applicationText": {applicationText},
-    //         "profession": "Chefe",
-    //         "country": "Brasil"
-    //     }
-    //     axios.post(url, body, headers)
-    // }
-    // const getTrips = () => {
-    //     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
-    //     axios.get(url).then((res) => {
-    //         setViagens(res.data.trips)
-    //         console.log('funciona')
-    //     }).catch((err) => {
-    //         console.log(err.data)
-    //     })
-    // }
-    // useEffect(() => {
-    //     getTrips()
-    // }, [])
-   
+    const applyToTrip = () => {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/${idViagem}/apply`
+        const body =  form 
+        const headers = 'Content-Type: application/json'
+        axios.post(url, body, headers)
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log('deu erro')
+                console.log(err.response)
+            })
+    }
+    const cadastrar = (event) => {
+        event.preventDefault();
+        applyToTrip(form)
+        console.log("Formulário enviado!", form);
+        cleanFields();
+    };
+    const getTrips = () => {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
+        axios.get(url).then((res) => {
+            setViagens(res.data.trips)
+            console.log('funciona')
+        }).catch((err) => {
+            console.log(err.data)
+        })
+    }
+    useEffect(() => {
+        getTrips()
+    }, [])
+
     const onChangeViagem = (event) => {
         setIdViagem(event.target.value)
     }
-    const opcoes = viagens && viagens.map((trip)=>{
+    const opcoes = viagens && viagens.map((trip) => {
         return <option key={trip.id} value={trip.id}>{trip.name}</option>
     })
     return (
         <ContainerForm>
             <p>Inscreva-se para uma viagem espacial!</p>
-            {/* <form>
-                <select onChange={onChangeViagem}>
+            <ContainerInputs onSubmit={cadastrar}>
+                <select
+                    onChange={onChangeViagem}
+                    name={"trip"}
+                    value={form.value}
+                    required
+                >
                     <option>Escolha uma Viagem</option>
                     {opcoes}
                 </select>
                 <input
                     placeholder={"Nome"}
                     name={"name"}
-                    onChange={setNome}
+                    value={form.name}
+                    onChange={onChange}
                     required
                 />
                 <input
                     placeholder={"Idade"}
                     type={"number"}
                     name={"age"}
-                    onChange={setIdade}
+                    value={form.age}
+                    onChange={onChange}
                     required
                     min={18}
                 />
                 <input
                     placeholder={"Texto de Candidatura"}
                     name={"applicationText"}
-                    onChange={setApplicationText}
+                    value={form.applicationText}
+                    onChange={onChange}
                     required
                 />
                 <input
                     placeholder={"Profissão"}
                     name={"profession"}
-
-                    // onChange={onChange}
+                    value={form.profession}
+                    onChange={onChange}
                     required
                 />
-                <input
+                <select
                     placeholder={"País"}
                     name={"country"}
-                    // onChange={onChange}
+                    value={form.country}
+                    onChange={onChange}
                     required
-                />
-                    
-            </form> */}
-            <BotoesNormais>                
-                <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
-                <BotaoNormal>Enviar</BotaoNormal>
-            </BotoesNormais>
+                >
+                    <option value={""} disabled>Escolha um País</option>
+                    {paises.map((country) => {
+                        return <option value={country} key={country}>{country}</option>
+                    })}
+                </select>
+                <BotoesNormais>
+                    <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
+                    <BotaoNormal>Enviar</BotaoNormal>
+                </BotoesNormais>
+            </ContainerInputs>
         </ContainerForm>
     )
 }

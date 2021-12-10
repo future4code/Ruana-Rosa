@@ -31,18 +31,21 @@ height: 20vw;
     background-color: rgba(255, 255, 255, 0.2);
 }
 `
-export const ContainerInputs = styled.div`
+export const ContainerInputs = styled.form`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
 width: 30vw;
-height: 7.7vw;
 margin: 5vw auto;
-input{
+input, select{
     width: 100%;
     height: 2.5vw;
+    margin-top: 2.5vw;
     background-color: rgba(255, 255, 255, 0.2);
+    ::-webkit-input-placeholder{
+        color: black;
+    }
 }
 `
 export const ContainerLista = styled.div`
@@ -52,6 +55,7 @@ justify-content: space-between;
 align-items: flex-start;
 padding: 7.5vw;
 background-image: url("https://stsci-opo.org/STScI-01EVVEJ9BCMEXN4Y1S93CR93DD.jpg");
+background-size: cover;
 color: white;
 font-weight: 300;
 `
@@ -60,10 +64,31 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 border: 2px solid white;
-padding: 20px;
 width: 50vw;
-margin-top: 20px;
+margin-top: 2.5vw;
 background-color: rgba(0, 0, 0, 0.5);
+height: 7.5vw;
+align-items: center;
+p{
+    margin-left: 2.5vw;
+}
+button{
+    margin-right: 2.5vw;
+    height: 2.5vw;
+    width: 2.5vw;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid black;
+    &:hover{
+    border: 2px solid white;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+}
+&:hover{
+    border: 2px solid black;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+}
 `
 export const CardViagem = styled.div`
 border: 2px solid white;
@@ -98,7 +123,9 @@ color: white;
 height: 100vh;
 padding: 100px;
 font-size: 64px;
-background-image: url('https://hubblesite.org/files/live/sites/hubble/files/home/_images/final-hubblesite-video-fall-back-img.jpg');
+background-size: cover;
+background-image: url('https://i.pinimg.com/originals/34/48/9d/34489d84e0c0a97d5966ad31a4c01ff2.jpg');
+/* background-image: url('https://hubblesite.org/files/live/sites/hubble/files/home/_images/final-hubblesite-video-fall-back-img.jpg'); */
 `
 export const ContainerForm = styled.div`
 background-image: url('https://stsci-opo.org/STScI-01EVT0PB5FFGNBDHKB9TM3RMZ1.png');
@@ -112,6 +139,7 @@ justify-content: center;
 
 export const ContainerLogin = styled.div`
 background-image: url('https://stsci-opo.org/STScI-01EVVNN9RWZ5XBSPZNK2KMDG1H.jpg');
+background-size: cover;
 height: 100vh;
 color: white;
 display: flex;
@@ -122,8 +150,11 @@ justify-content: center;
 
 export const ContainerPainel = styled.div`
 background-image: url('https://stsci-opo.org/STScI-01EVVD9FMW59RC687K9CYKZJZ9.jpg');
+background-size: cover;
+background-repeat: repeat-y;
 height: 100vh;
 color: white;
+padding: 10vw;
 display: flex;
 flex-direction: column;
 align-items: center;
