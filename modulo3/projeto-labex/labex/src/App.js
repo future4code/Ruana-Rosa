@@ -13,7 +13,7 @@ import GlobalStyle from './styles/globalStyle';
 
 
 function App() {
-  const [idViagem, setIdViagem] = useState('')
+ 
   return (
     <BrowserRouter>
     <GlobalStyle/>
@@ -37,7 +37,7 @@ function App() {
         <Route exact path={'/admin/trips/create'}>
           <CreateTripPage/>
         </Route>
-        <Route exact path={`/admin/trips/${idViagem}`}>
+        <Route exact path={`/admin/trips/:id`}>
           <TripDetailsPage/>
         </Route>
         <Route>
