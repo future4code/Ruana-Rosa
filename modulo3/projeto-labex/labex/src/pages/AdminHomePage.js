@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { BotaoNormal, BotoesTres, CardNomeViagem, CardViagem, ContainerPainel } from "../styles/styles";
+import { BotaoNormal, BotoesTres, CardNomeViagem, CardViagem, ContainerPainel, Paragrafo } from "../styles/styles";
 
 export default function AdminHomePage() {
     const [viagens, setViagens] = useState([])
     const [viagem, setViagem] = useState({})
-    const [idViagem, setIdViagem] = useState('')
     const history = useHistory()
     const voltar = () => {
         history.goBack()
@@ -29,18 +28,17 @@ export default function AdminHomePage() {
     useEffect(() => {
         getTrips()
     }, [])
-    
-    const listaViagens = viagens.map((trip) => {   
-        const irParaDetalhes = (idViagem) => {
-            setIdViagem(trip.id)
-            
-            history.push(`/admin/trips/${idViagem}`)
-            
-        }
+    const irParaDetalhes = (id) => {
+        
+        history.push(`/admin/trips/${id}`)
+        
+    }
+    const listaViagens = viagens && viagens.map((trip) => {   
+        
         return (
             <CardNomeViagem
-                key={idViagem}
-                onClick={() => irParaDetalhes(history, idViagem)}
+                key={trip.id}
+                onClick={() => irParaDetalhes(history, trip.id)}
             >
                 <p>{trip.name}</p>
                 <button>X</button>
@@ -50,11 +48,11 @@ export default function AdminHomePage() {
 
     return (
         <ContainerPainel>
-            <p>Painel Administrativo</p>
+            <Paragrafo>PAINEL ADMINISTRATIVO</Paragrafo>
             <BotoesTres>
-                <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
-                <BotaoNormal onClick={irParaCriarViagem}>Criar Viagem</BotaoNormal>
-                <BotaoNormal>Logout</BotaoNormal>
+                <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
+                <BotaoNormal onClick={irParaCriarViagem}>CRIAR VIAGEM</BotaoNormal>
+                <BotaoNormal>LOGOUT</BotaoNormal>
             </BotoesTres>
             <div>
                 {listaViagens}

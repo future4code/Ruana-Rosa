@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import { BotaoNormal, BotoesNormais, ContainerForm, ContainerInputs } from "../styles/styles";
+import { BotaoNormal, BotoesNormais, ContainerForm, ContainerInputs, Paragrafo } from "../styles/styles";
 import useForm from "../hooks/useForm";
 import { paises } from "../constants/paises";
 
@@ -37,8 +37,9 @@ export default function ApplicationFormPage() {
     const cadastrar = (event) => {
         event.preventDefault();
         applyToTrip(form)
-        console.log("Formulário enviado!", form);
-        cleanFields();
+        console.log("Formulário enviado!", form)
+        alert('Sua candidatura foi registrada com sucesso! Desejamos boa sorte')
+        cleanFields()
     };
     const getTrips = () => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
@@ -61,7 +62,7 @@ export default function ApplicationFormPage() {
     })
     return (
         <ContainerForm>
-            <p>Inscreva-se para uma viagem espacial!</p>
+            <Paragrafo>CANDIDATE-SE A UMA VIAGEM ESPACIAL!</Paragrafo>
             <ContainerInputs onSubmit={cadastrar}>
                 <select
                     onChange={onChangeViagem}
@@ -115,8 +116,8 @@ export default function ApplicationFormPage() {
                     })}
                 </select>
                 <BotoesNormais>
-                    <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
-                    <BotaoNormal>Enviar</BotaoNormal>
+                    <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
+                    <BotaoNormal>ENVIAR</BotaoNormal>
                 </BotoesNormais>
             </ContainerInputs>
         </ContainerForm>

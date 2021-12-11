@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import styled from "styled-components";
-import { BotaoNormal, BotoesNormais, CardViagem, ContainerLista } from "../styles/styles";
+import { BotaoNormal, BotoesNormais, CardViagem, ContainerLista, Paragrafo } from "../styles/styles";
 
 
 export default function ListTripsPage() {
@@ -42,12 +42,14 @@ export default function ListTripsPage() {
     })
     return (
         <ContainerLista>
-            <BotoesNormais>
-                <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
-                <BotaoNormal onClick={irParaApplication}>CANDIDATAR-SE</BotaoNormal>
-            </BotoesNormais>
             <div>
-                <p>Lista de Viagens</p>
+                <BotoesNormais>
+                    <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
+                    <BotaoNormal onClick={irParaApplication}>CANDIDATAR-SE</BotaoNormal>
+                </BotoesNormais>
+                <Paragrafo>NOSSAS VIAGENS</Paragrafo>
+            </div>
+            <div>
                 {listaTrips}
             </div>
         </ContainerLista>

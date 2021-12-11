@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { BotaoNormal, BotoesNormais, ContainerInputs, ContainerLogin } from "../styles/styles";
+import { BotaoNormal, BotoesNormais, ContainerInputs, ContainerLogin, Paragrafo } from "../styles/styles";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
@@ -39,7 +39,7 @@ export default function LoginPage() {
     }
     return (
         <ContainerLogin>
-            <p>Login</p>
+            <Paragrafo>LOGIN</Paragrafo>
             <ContainerInputs>
                 <input
                     placeholder="E-mail"
@@ -55,8 +55,8 @@ export default function LoginPage() {
                  />
             </ContainerInputs>
             <BotoesNormais>
-                <BotaoNormal onClick={voltar}>Voltar</BotaoNormal>
-                <BotaoNormal onClick={onSubmitLogin}>Entrar</BotaoNormal>
+                <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
+                <BotaoNormal onClick={onSubmitLogin}>ENTRAR</BotaoNormal>
             </BotoesNormais>
         </ContainerLogin>
     )
