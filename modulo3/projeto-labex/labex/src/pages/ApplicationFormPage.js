@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import axios from "axios";
 import { BotaoNormal, BotoesNormais, ContainerForm, ContainerInputs, Paragrafo } from "../styles/styles";
 import useForm from "../hooks/useForm";
 import { paises } from "../constants/paises";
+import { url_base } from "../constants/url_base";
 
 export default function ApplicationFormPage() {
-    const aluno = 'ruana-piber-carver'
     const [idViagem, setIdViagem] = useState('')
     const [viagens, setViagens] = useState([])
-    const { form, onChange, cleanFields } = useForm({
+    const { form, onChange, limpaCampos } = useForm({
         name: '',
         age: '',
         applicationText: '',
@@ -21,11 +20,10 @@ export default function ApplicationFormPage() {
     const voltar = () => {
         history.goBack()
     }
-    const applyToTrip = () => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/${idViagem}/apply`
-        const body =  form 
+    const candidatarSe = () => {
+        const body = form
         const headers = 'Content-Type: application/json'
-        axios.post(url, body, headers)
+        axios.post(`${url_base}/trips/${idViagem}/apply`, body, headers)
             .then((res) => {
                 console.log(res.data)
             })
@@ -36,22 +34,19 @@ export default function ApplicationFormPage() {
     }
     const cadastrar = (event) => {
         event.preventDefault();
-        applyToTrip(form)
-        console.log("Formulário enviado!", form)
+        candidatarSe(form)
         alert('Sua candidatura foi registrada com sucesso! Desejamos boa sorte')
-        cleanFields()
+        limpaCampos()
     };
-    const getTrips = () => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
-        axios.get(url).then((res) => {
+    const pegarViagens = () => {
+        axios.get(`${url_base}/trips`).then((res) => {
             setViagens(res.data.trips)
-            console.log('funciona')
         }).catch((err) => {
             console.log(err.data)
         })
     }
     useEffect(() => {
-        getTrips()
+        pegarViagens()
     }, [])
 
     const onChangeViagem = (event) => {
@@ -123,5 +118,3 @@ export default function ApplicationFormPage() {
         </ContainerForm>
     )
 }
-
-//https://stsci-opo.org/STScI-01EVT0PB5FFGNBDHKB9TM3RMZ1.png

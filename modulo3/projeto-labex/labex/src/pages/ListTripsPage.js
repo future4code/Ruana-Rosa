@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import styled from "styled-components";
 import { BotaoNormal, BotoesNormais, CardViagem, ContainerLista, Paragrafo } from "../styles/styles";
-
+import { url_base } from "../constants/url_base";
 
 export default function ListTripsPage() {
     const [viagens, setViagens] = useState([])
@@ -11,22 +10,19 @@ export default function ListTripsPage() {
     const voltar = () => {
         history.goBack()
     }
-    const irParaApplication = () => {
+    const irParaCandidatura = () => {
         history.push('/trips/application')
     }
 
-    const getTrips = () => {
-        const aluno = 'ruana-piber-carver'
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
-        axios.get(url).then((res) => {
+    const pegarViagens = () => {
+        axios.get(`${url_base}/trips`).then((res) => {
             setViagens(res.data.trips)
-            console.log('funciona')
         }).catch((err) => {
             console.log(err.data)
         })
     }
     useEffect(() => {
-        getTrips()
+        pegarViagens()
     }, [])
 
     const listaTrips = viagens.map((trip) => {
@@ -45,7 +41,7 @@ export default function ListTripsPage() {
             <div>
                 <BotoesNormais>
                     <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
-                    <BotaoNormal onClick={irParaApplication}>CANDIDATAR-SE</BotaoNormal>
+                    <BotaoNormal onClick={irParaCandidatura}>CANDIDATAR-SE</BotaoNormal>
                 </BotoesNormais>
                 <Paragrafo>NOSSAS VIAGENS</Paragrafo>
             </div>

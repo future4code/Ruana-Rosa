@@ -1,15 +1,29 @@
 import styled from "styled-components"
 
-
-export const ContainerHome = styled.div`
-background-image: url('https://stsci-opo.org/STScI-01EVSTRG78W19FA95VRQWEF919.png');
+export const Paragrafo = styled.p`
+font-weight: 500;
+font-size: 40px;
+text-shadow: 1px 1px 1px black;
+`
+export const BotoesNormais = styled.div`
+margin-top: 2.5vw;
+margin-bottom: 2.5vw;
+width: 30vw;
 display: flex;
-flex-direction: column;
+flex-direction: row !important;
+justify-content: space-between;
+`
+export const BotaoNormal = styled.button`
+border: 2px solid white;
+background-color: rgba(0, 0, 0, 0.5);
 color: white;
-height: 100vh;
-align-items: center;
-font-family: Poppins, sans-serif;
-font-weight: 300;
+width: 10vw;
+height: 5vw;
+&:hover{
+    border: 2px solid black;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+}
 `
 export const BotoesGrandes = styled.div`
 width: 60vw;
@@ -30,6 +44,22 @@ height: 20vw;
     color: black;
     background-color: rgba(255, 255, 255, 0.2);
 }
+`
+export const BotoesTres = styled.div`
+width: 50vw;
+display: flex;
+justify-content: space-between;
+margin-top: 2.5vw;
+`
+export const ContainerHome = styled.div`
+background-image: url('https://stsci-opo.org/STScI-01EVSTRG78W19FA95VRQWEF919.png');
+display: flex;
+flex-direction: column;
+color: white;
+height: 100vh;
+align-items: center;
+font-family: Poppins, sans-serif;
+font-weight: 300;
 `
 export const ContainerInputs = styled.form`
 display: flex;
@@ -115,31 +145,7 @@ margin-top: 20px;
 background-color: rgba(0, 0, 0, 0.5);
 align-items: flex-start !important;
 `
-export const Paragrafo = styled.p`
-font-weight: 500;
-font-size: 40px;
-text-shadow: 1px 1px 1px black;
-`
-export const BotoesNormais = styled.div`
-margin-top: 2.5vw;
-margin-bottom: 2.5vw;
-width: 30vw;
-display: flex;
-flex-direction: row !important;
-justify-content: space-between;
-`
-export const BotaoNormal = styled.button`
-border: 2px solid white;
-background-color: rgba(0, 0, 0, 0.5);
-color: white;
-width: 10vw;
-height: 5vw;
-&:hover{
-    border: 2px solid black;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-`
+
 export const ContainerErro = styled.div`
 display: flex;
 flex-direction: column;
@@ -151,7 +157,6 @@ padding: 100px;
 font-size: 64px;
 background-size: cover;
 background-image: url('https://i.pinimg.com/originals/34/48/9d/34489d84e0c0a97d5966ad31a4c01ff2.jpg');
-/* background-image: url('https://hubblesite.org/files/live/sites/hubble/files/home/_images/final-hubblesite-video-fall-back-img.jpg'); */
 `
 export const ContainerCriarViagem = styled.div`
 background-image: url('https://stsci-opo.org/STScI-01EVVBEMGZCVS2PFV8DP9ZX5R8.png');
@@ -166,7 +171,8 @@ padding: 5vw;
 `
 
 export const ContainerForm = styled.div`
-background-image: url('https://stsci-opo.org/STScI-01EVT0PB5FFGNBDHKB9TM3RMZ1.png');
+background-image: url('https://stsci-opo.org/STScI-01EVT8ENGBJK9R842DRFWA68HK.jpg');
+background-size: cover;
 height: 100vh;
 color: white;
 display: flex;
@@ -203,11 +209,6 @@ align-items: center;
 justify-content: center;
 `
 
-export const BotoesTres = styled.div`
-width: 50vw;
-display: flex;
-justify-content: space-between;
-margin-top: 2.5vw;
-`
+
 
 

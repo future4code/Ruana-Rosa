@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { url_base } from "../constants/url_base";
 import { BotaoNormal, BotoesNormais, ContainerInputs, ContainerLogin, Paragrafo } from "../styles/styles";
 
 export default function LoginPage() {
@@ -20,22 +21,19 @@ export default function LoginPage() {
     const entrarAdmin = () => {
         history.push('/admin/trips/list')
     }
-    const onSubmitLogin = () =>{
-        console.log(email, senha )
-        const aluno = 'ruana-piber-carver'
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/login`
+    const onSubmitLogin = () => {
         const body = {
             email: email,
             password: senha
         }
-        axios.post(url,body)
-        .then((res) =>{
-            console.log('Deu certo: ', res.data)
-            entrarAdmin()
-        })
-        .catch((err) =>{
-            console.log('Deu errado: ', err.response)
-        })
+        axios.post(`${url_base}/login`, body)
+            .then((res) => {
+                localStorage.setItem("token", res.data.token)
+                entrarAdmin()
+            })
+            .catch((err) => {
+                console.log('Deu errado: ', err.response)
+            })
     }
     return (
         <ContainerLogin>
@@ -52,7 +50,7 @@ export default function LoginPage() {
                     type='password'
                     value={senha}
                     onChange={onChangeSenha}
-                 />
+                />
             </ContainerInputs>
             <BotoesNormais>
                 <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>

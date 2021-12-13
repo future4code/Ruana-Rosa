@@ -8,7 +8,7 @@ export default function HomePage() {
         history.push('/trips/list')
     }
     const irParaRestrita = () => {
-        history.push('/login')
+        history.push('/admin/trips/list')
     }
     return (
         <ContainerHome>

@@ -5,10 +5,10 @@ import { BotaoNormal, ContainerErro } from "../styles/styles";
 
 export default function ErrorPage() {
     const history = useHistory()
-    const voltar = ()=>{
+    const voltar = () => {
         history.goBack()
     }
-    return(
+    return (
         <ContainerErro>
             <p>404</p>
             <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>

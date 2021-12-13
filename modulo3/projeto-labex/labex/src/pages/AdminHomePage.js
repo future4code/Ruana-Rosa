@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { BotaoNormal, BotoesTres, CardNomeViagem, CardViagem, ContainerPainel, Paragrafo } from "../styles/styles";
+import { url_base } from "../constants/url_base";
+import { useAcessoRestrito } from "../hooks/useAcessoRestrito";
+import { BotaoNormal, BotoesTres, CardNomeViagem, ContainerPainel, Paragrafo } from "../styles/styles";
 
 export default function AdminHomePage() {
+    useAcessoRestrito()
     const [viagens, setViagens] = useState([])
-    const [viagem, setViagem] = useState({})
+    const [token, setToken] = useState()
     const history = useHistory()
     const voltar = () => {
         history.goBack()
@@ -14,34 +17,49 @@ export default function AdminHomePage() {
         history.push('/admin/trips/create')
     }
 
-    const getTrips = () => {
-        const aluno = 'ruana-piber-carver'
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
-        axios.get(url).then((res) => {
+    const pegarViagens = () => {
+        axios.get(`${url_base}/trips`).then((res) => {
             setViagens(res.data.trips)
-
-            console.log('funciona')
         }).catch((err) => {
             console.log(err.data)
         })
     }
     useEffect(() => {
-        getTrips()
+        pegarViagens()
     }, [])
-    const irParaDetalhes = (id) => {
-        
-        history.push(`/admin/trips/${id}`)
-        
+
+    const deslogar = () => {
+        setToken(localStorage.removeItem("token"))
+        history.push('/')
     }
-    const listaViagens = viagens && viagens.map((trip) => {   
-        
+    const listaViagens = viagens && viagens.map((trip) => {
+        const irParaDetalhes = () => {
+            history.push(`/admin/trips/${trip.id}`)
+
+        }
+        const deletarViagem = () => {
+            const token = window.localStorage.getItem("token")
+            const headers = { auth: token }
+            axios.delete(`${url_base}/trips/${trip.id}`, headers)
+                .then((res) => {
+                    alert('A viagem foi deletada')
+                })
+                .catch((err) => {
+                    alert("Sua solicitação não pode ser processada.")
+                })
+        }
+        const deletar = () => {
+            if (window.confirm(`Quer mesmo deletar a viagem ${trip.name}?`)) {
+                deletarViagem(trip.id)
+            }
+        }
         return (
             <CardNomeViagem
                 key={trip.id}
                 onClick={() => irParaDetalhes(history, trip.id)}
             >
                 <p>{trip.name}</p>
-                <button>X</button>
+                <button onClick={() => deletar(trip.id)}>X</button>
             </CardNomeViagem>
         )
     })
@@ -52,7 +70,7 @@ export default function AdminHomePage() {
             <BotoesTres>
                 <BotaoNormal onClick={voltar}>VOLTAR</BotaoNormal>
                 <BotaoNormal onClick={irParaCriarViagem}>CRIAR VIAGEM</BotaoNormal>
-                <BotaoNormal>LOGOUT</BotaoNormal>
+                <BotaoNormal onClick={deslogar}>LOGOUT</BotaoNormal>
             </BotoesTres>
             <div>
                 {listaViagens}
@@ -60,3 +78,5 @@ export default function AdminHomePage() {
         </ContainerPainel>
     )
 }
+
+//

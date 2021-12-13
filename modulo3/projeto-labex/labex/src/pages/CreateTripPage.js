@@ -4,42 +4,39 @@ import useForm from "../hooks/useForm";
 import { planetas } from "../constants/planetas"
 import axios from "axios";
 import { BotaoNormal, BotoesNormais, ContainerCriarViagem, ContainerInputs, Paragrafo } from "../styles/styles";
+import { useAcessoRestrito } from "../hooks/useAcessoRestrito";
+import { url_base } from "../constants/url_base";
 
 export default function CreateTripPage() {
-    const aluno = 'ruana-piber-carver'
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlHUHVWYkJHMHVSTURab0JUZnFLIiwiZW1haWwiOiJydWFuYS5waWJlckBnbWFpbC5jb20iLCJpYXQiOjE2MzkwMDgwNzF9.wNM75qCArYR44HBAr2iUwge1lwEtqJ8mORLCmjgsyhY"
+    useAcessoRestrito()
+    const token = localStorage.getItem("token")
     const history = useHistory()
     const voltar = () => {
         history.goBack()
     }
-    const { form, onChange, cleanFields } = useForm({
+    const { form, onChange, limpaCampos } = useForm({
         name: '',
         planet: '',
         date: '',
         description: '',
         durationInDays: '',
     })
-    const createTrip = () => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`
-        const body =  form 
-        const headers =  { auth: token }
-        axios.post(url, body, headers)
+
+    const criarViagem = (event) => {
+        const body = form
+        const headers = { auth: token }
+        event.preventDefault()
+        axios.post(`${url_base}/trips`, body, headers)
             .then((res) => {
-                console.log(res.data)
+                alert('Viagem criada com sucesso!')
             })
             .catch((err) => {
-                console.log('deu erro')
-                console.log(err.response)
+                alert('Infelizmente, tivemos problemas ao processar sua solicitação.')
             })
-    }
-    const criarViagem = (event) => {
-        event.preventDefault()
-        console.log("Formulário enviado!", form)
-        createTrip(form)
-        cleanFields()
+        limpaCampos()
     }
     const diaAtual = new Date()
-    const stringDiaAtual = diaAtual.getFullYear() + "-" +
+    const desdeHoje = diaAtual.getFullYear() + "-" +
         ("0" + (diaAtual.getMonth() + 1)).substr(-2) + "-"
         + ("0" + diaAtual.getDate()).substr(-2)
     return (
@@ -53,7 +50,6 @@ export default function CreateTripPage() {
                     onChange={onChange}
                     required />
                 <select
-                    placeholder={"Planeta"}
                     name={"planet"}
                     value={form.planet}
                     onChange={onChange}
@@ -71,7 +67,7 @@ export default function CreateTripPage() {
                     value={form.date}
                     onChange={onChange}
                     required
-                    min={stringDiaAtual} />
+                    min={desdeHoje} />
                 <input
                     placeholder={"Descrição da Viagem"}
                     name={"description"}
@@ -90,7 +86,6 @@ export default function CreateTripPage() {
                     <BotaoNormal>CRIAR</BotaoNormal>
                 </BotoesNormais>
             </ContainerInputs>
-
         </ContainerCriarViagem>
     )
 }
