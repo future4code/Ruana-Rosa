@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Cabecalho from '../components/header';
 import PaginaDeCadastro from '../pages/paginaDeCadastro';
 import PaginaDeErro from '../pages/paginaDeErro';
 import PaginaDeLogin from '../pages/PaginaDeLogin';
@@ -10,6 +11,7 @@ export const Router = () => {
     return (
         <BrowserRouter>
             <GlobalStyle />
+            <Cabecalho/>
             <Switch>
                 <Route exact path={'/login'}>
                     <PaginaDeLogin />
