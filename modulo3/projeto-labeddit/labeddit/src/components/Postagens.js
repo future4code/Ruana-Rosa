@@ -37,6 +37,8 @@ export default function Postagens() {
                 <p>{post.username}</p>
                 <p><strong>{post.title}</strong></p>
                 <p>{post.body} </p>
+                <p>{post.commentCount} comentários</p>
+                {/* FAZER TERNÁRIO PRA EXIBIR NENHUM COMENTÁRIO */}
 
             </div>
         )
