@@ -1,4 +1,7 @@
+import CardLabenu from "../components/cardLabenu";
+import Comunidade from "../components/comunidade";
 import CriarPost from "../components/criarPost";
+import FotoCarver from "../components/fotoCarver";
 import Postagens from "../components/Postagens";
 import { useAcessoRestrito } from "../hooks/useAcessoRestrito";
 import { ContainerPrincipal } from "../styles/styles";
@@ -8,8 +11,15 @@ export default function PaginaPrincipal() {
 
     return (
         <ContainerPrincipal>
-            <CriarPost />
-            <Postagens />
+            <FotoCarver />
+            <div>
+                <Comunidade />
+                <CriarPost />
+                <Postagens />
+            </div>
+            <div>
+                <CardLabenu />
+            </div>
         </ContainerPrincipal>
     )
 }

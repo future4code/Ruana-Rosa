@@ -69,7 +69,7 @@ export default function Postagens() {
                     </div>
                     {post.commentCount === null ?
                         <p>Nenhum comentário</p> :
-                        <p>{post.commentCount} comentários</p>}
+                        <p onClick={() => clicouPost(post.id)}>{post.commentCount} comentários</p>}
                 </div>
             </CardPost>
         )

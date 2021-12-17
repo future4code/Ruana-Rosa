@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const ContainerPrincipal = styled.div`
 display: flex;
-flex-direction: column;
-justify-content: center;
+flex-direction: row;
+justify-content: space-evenly;
 background-color: #d4dded;
 gap: 25px;
-background-repeat:  repeat;
 `
 
 export const CardPost = styled.div`
@@ -25,7 +24,7 @@ div{
 `
 
 export const Conteudo = styled.p`
-width: 100%;
+max-width: 100%;
 min-height: 100px;
 margin-top: 25px;
 `

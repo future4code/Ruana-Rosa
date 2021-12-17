@@ -6,6 +6,7 @@ import useForm from "../hooks/useForm";
 import { url_base } from "../constants/url_base";
 import {CardPost, Conteudo} from "../styles/styles";
 
+
 export default function PaginaDetalhesPost() {
     useAcessoRestrito()
     const history = useHistory()
