@@ -4,6 +4,7 @@ import { useAcessoRestrito } from "../hooks/useAcessoRestrito";
 import axios from "axios";
 import useForm from "../hooks/useForm";
 import { url_base } from "../constants/url_base";
+import {CardPost, Conteudo} from "../styles/styles";
 
 export default function PaginaDetalhesPost() {
     useAcessoRestrito()
@@ -31,10 +32,31 @@ export default function PaginaDetalhesPost() {
         console.log(detalhes)
     }, [])
     const comentarios = detalhes.map((comentario) => {
+        const positivo = (id) => {
+            const body = { direction: 1 }
+            axios.post(`${url_base}/comments/${id}/votes`, body, { headers: { Authorization: token } })
+                .then((res) => {
+                    console.log(res)
+                }).catch((err) => {
+                    console.log(err.response)
+                })
+        }
+        const negativo = (id) => {
+            const body = { direction: -1 }
+            axios.put(`${url_base}/comments/${id}/votes`, body, { headers: { Authorization: token } })
+                .then((res) => {
+                    console.log(res)
+                }).catch((err) => {
+                    console.log(err.response)
+                })
+        }
         return (
             <div>
                 <p>{comentario.username}</p>
                 <p>{comentario.body}</p>
+                <button onClick={() => { negativo(comentario.id) }}>-</button>
+                <p>{comentario.voteSum} </p>
+                <button onClick={() => { positivo(comentario.id) }} >+</button>
             </div>
         )
     })
@@ -78,14 +100,16 @@ export default function PaginaDetalhesPost() {
         return post.id === params.id
     }).map((post) => {
         return (
-            <div
+            <CardPost
                 key={post.id}
             >
-                <p>{post.username}</p>
-                <p><strong>{post.title}</strong></p>
-                <p>{post.body} </p>
+                 <div>
+                    <p><i>{post.username}</i> </p>
+                    <p><strong>{post.title}</strong></p>
+                </div>
+                <Conteudo>{post.body} </Conteudo>
 
-            </div>
+            </CardPost>
         )
     })
 
