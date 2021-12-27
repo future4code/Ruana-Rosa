@@ -110,6 +110,7 @@ export const CardLogin = styled.div`
     background-color:#e8eefa;
     justify-content: space-evenly;
     align-items: center;
+    height: 100%;
     padding: 25px 0;  
     form{
     margin: 15px auto;
