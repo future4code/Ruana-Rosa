@@ -3,7 +3,6 @@ import useForm from "../hooks/useForm";
 import { irParaCadastro, irParaFeed } from "../routes/cordinator";
 import axios from 'axios';
 import { url_base } from "../constants/url_base";
-import { useState } from "react";
 import { CardFormLogin, CardLogin, ContainerLogin, IrCadastro, LadoLogin } from "../styles/styles";
 
 export default function PaginaDeLogin() {
@@ -13,24 +12,21 @@ export default function PaginaDeLogin() {
         password: "",
     })
 
-    const fazerLogin = () => {
+    const fazerLogin = (event) => {
         const headers = 'Content-Type: application/json'
         const body = form
+        event.preventDefault()
+        console.log(form)
         axios.post(`${url_base}/users/login`, body, headers)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)
-                console.log(localStorage.getItem('token'))
+                limpaCampos()
+                irParaFeed(history)
             }).catch((err) => {
-                console.log('Deu errado: ', err.response)
+                alert(`Infelizmente, não conseguimos concluir a sua solicitação`)
             })
     }
-    const logar = (event) => {
-        event.preventDefault()
-        console.log(form)
-        fazerLogin(form)
-        limpaCampos()
-        irParaFeed(history)
-    }
+
     return (
         <ContainerLogin>
             <LadoLogin>
@@ -41,7 +37,7 @@ export default function PaginaDeLogin() {
             <CardFormLogin>
                 <CardLogin>
                     <p>Acesse o <b>Labekut</b> com a sua conta</p>
-                    <form onSubmit={logar}>
+                    <form onSubmit={fazerLogin}>
                         <div> E-mail:
                             <input
                                 placeholder="e-mail"

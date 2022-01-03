@@ -11,7 +11,7 @@ export const Router = () => {
     return (
         <BrowserRouter>
             <GlobalStyle />
-            <Cabecalho/>
+            <Cabecalho />
             <Switch>
                 <Route exact path={'/login'}>
                     <PaginaDeLogin />

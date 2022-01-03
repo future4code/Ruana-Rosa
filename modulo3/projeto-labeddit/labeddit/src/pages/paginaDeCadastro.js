@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { url_base } from "../constants/url_base";
 import useForm from "../hooks/useForm";
 import { irParaFeed } from "../routes/cordinator";
+import { paises } from "../constants/paises";
+import { FaixaCadastro, ContainerCadastro, CardCadastro, LadoEsquerdo, Benvinda } from "../styles/styles";
 
 export default function PaginaDeCadastro() {
     const history = useHistory()
@@ -34,24 +35,24 @@ export default function PaginaDeCadastro() {
         irParaFeed(history)
     }
     return (
-        <div>
-            <p>bem-vinda(o) ao Labekut!</p>
+        <ContainerCadastro>
+            <Benvinda>bem-vinda(o) ao Labekut!</Benvinda>
             <p>Só precisamos confirmar algumas coisas antes de você começar a usar o Labekut:</p>
-            <div>
+            <CardCadastro>
                 <form onSubmit={cadastrar}>
-                    <div> <p>e-mail:</p>
+                    <FaixaCadastro> <LadoEsquerdo>e-mail:</LadoEsquerdo>
                         <input
-                            placeholder="e-mail"
+
                             name="email"
                             type={'email'}
                             value={form.email}
                             onChange={onChange}
                             required
                         />
-                    </div>
-                    <div> <p>senha:</p>
+                    </FaixaCadastro>
+                    <FaixaCadastro> <LadoEsquerdo>senha:</LadoEsquerdo>
                         <input
-                            placeholder="senha"
+
                             name="password"
                             type={'password'}
                             value={form.password}
@@ -60,45 +61,59 @@ export default function PaginaDeCadastro() {
                             pattern={"^.{8,30}$"}
                             title={"Sua senha deve ter entre 8 e 30 caracteres"}
                         />
-                    </div>
-                    <div><p>nome de usuário:</p>
+                    </FaixaCadastro>
+                    <FaixaCadastro><LadoEsquerdo>nome de usuário:</LadoEsquerdo>
                         <input
-                            placeholder="Nome de usuário"
+
                             name="username"
                             value={form.username}
                             onChange={onChange}
                             required
                         />
-                    </div>
+                    </FaixaCadastro>
                 </form>
-                <div><p>desculpe se estamos sendo indiscretos, mas qual a sua idade?</p>
+                <FaixaCadastro><LadoEsquerdo>desculpe se estamos sendo indiscretos, mas qual a sua idade?</LadoEsquerdo>
                     <input
                         required
                         type={"number"}
                         min={18}
                     />
-                </div>
-                <div>
-                    <p>sexo:</p>
-                    <label >
-                    <input type="radio"/>
-                    feminino
+                </FaixaCadastro>
+                <FaixaCadastro>
+                    <LadoEsquerdo>sexo:</LadoEsquerdo>
+                    <label
+                        required
+                    >
+                        <input type="radio" />
+                        feminino
                     </label>
                     <label >
-                    <input type="radio"/>
-                    masculino
+                        <input type="radio" />
+                        masculino
                     </label>
                     <label >
-                    <input type="radio"/>
-                    prefiro não informar
+                        <input type="radio" />
+                        prefiro não informar
                     </label>
-                </div>
-            </div>
+                </FaixaCadastro>
+                <FaixaCadastro>
+                    <LadoEsquerdo>país:</LadoEsquerdo>
+                    <select
+                        name={"pais"}
+                        required
+                    >
+                        <option value={""} selected disabled>Escolha um País</option>
+                        {paises.map((pais) => {
+                            return <option value={pais} key={pais}>{pais}</option>
+                        })}
+                    </select>
+                </FaixaCadastro>
+            </CardCadastro>
             <div>
-                <button type="submit">CADASTRAR</button>
-                <button type="button" onClick={() => voltar()}>VOLTAR</button>
+                <button type="button" onClick={() => voltar()}>voltar</button>
+                <button type="submit" onClick={cadastrar}>tudo certo, pode criar minha conta</button>
             </div>
-        </div>
+        </ContainerCadastro>
     )
 
 }

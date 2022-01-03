@@ -16,12 +16,11 @@ export default function CriarPost() {
                 console.log(res.data)
             })
             .catch((err) => {
-                console.log(err.response)
+                alert(`Infelizmente, ocorreu um erro ao processar a sua solicitação: ${err.response}`)
             })
     }
     const postar = (event) => {
         event.preventDefault()
-        console.log(form)
         criarPostagem()
         limpaCampos()
     }
@@ -42,7 +41,7 @@ export default function CriarPost() {
                     onChange={onChange}
                     required
                 />
-                <button>PUBLICAR</button>
+                <button>publicar</button>
             </form>
         </CardPostar>
     )

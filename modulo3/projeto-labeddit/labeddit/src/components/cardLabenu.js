@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LogoLabenu from '../img/labenu_logo.png';
 
-const CardLab=styled.div`
+const CardLab = styled.div`
 display: flex;
 flex-direction: column;
 width: 270px;
@@ -24,21 +24,24 @@ button {
     border: 1px solid #c5c6ca;
     font-weight: 800;
     margin: 15px auto;
+    :hover{
+        background-color: #eff8ff;
+    }
 }
 `
-const Labenu=styled.p`
+const Labenu = styled.p`
 color: #337ab7;
 font-size: 18px;
 margin-bottom: 10px;
 `
-export default function CardLabenu(){
+export default function CardLabenu() {
 
-    return(
+    return (
         <CardLab>
             <img src={LogoLabenu} alt="Logotipo da Labenu" />
             <Labenu>Labenu</Labenu>
             <p>Patrocinado</p>
-            <button>participar da comunidade</button>
+            <a href='https://www.labenu.com.br/' target='blank' ><button>participar da comunidade</button> </a>
         </CardLab>
     )
 }

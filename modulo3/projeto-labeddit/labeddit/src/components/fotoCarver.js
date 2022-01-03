@@ -19,7 +19,7 @@ h4{
     margin-top: 10px;
 }
 p{
-    color: #c1c1c1;
+    color: #8c8c8c;
     margin-top: 10px;
 }
 hr{

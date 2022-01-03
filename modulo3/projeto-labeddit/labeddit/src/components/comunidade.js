@@ -6,7 +6,7 @@ flex-direction: column;
 background-color: #fff ;
 margin-top: 25px;
 padding: 10px;
-border-radius: 6px;
+border-radius: 6px 50px 6px 6px;
 h2{
     font-size: 25px;
     letter-spacing: .7px;
@@ -53,7 +53,6 @@ text-align: left;
 `
 
 export default function Comunidade() {
-
     return (
         <ContainerComunidade>
             <h2>Somos todos Carver</h2>
@@ -66,7 +65,8 @@ export default function Comunidade() {
                 <FaixaEscura><LadoEsquerdo>moderadores:</LadoEsquerdo><LadoDireito>nenhum</LadoDireito></FaixaEscura>
                 <FaixaClara><LadoEsquerdo>tipo:</LadoEsquerdo><LadoDireito>pública</LadoDireito></FaixaClara>
                 <FaixaEscura><LadoEsquerdo>local:</LadoEsquerdo><LadoDireito>Brasil</LadoDireito></FaixaEscura>
-                <FaixaClara><LadoEsquerdo>membros:</LadoEsquerdo><LadoDireito>104</LadoDireito></FaixaClara>
+                <FaixaClara><LadoEsquerdo>criada em:</LadoEsquerdo><LadoDireito>27 de Setembro de 2021</LadoDireito></FaixaClara>
+                <FaixaEscura><LadoEsquerdo>membros:</LadoEsquerdo><LadoDireito>104</LadoDireito></FaixaEscura>
             </div>
         </ContainerComunidade>
     )
