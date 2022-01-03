@@ -16,7 +16,6 @@ export default function PaginaDeLogin() {
         const headers = 'Content-Type: application/json'
         const body = form
         event.preventDefault()
-        console.log(form)
         axios.post(`${url_base}/users/login`, body, headers)
             .then((res) => {
                 localStorage.setItem("token", res.data.token)

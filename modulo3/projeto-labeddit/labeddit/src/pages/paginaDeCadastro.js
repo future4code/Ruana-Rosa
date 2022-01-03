@@ -29,7 +29,6 @@ export default function PaginaDeCadastro() {
     }
     const cadastrar = (event) => {
         event.preventDefault()
-        console.log(form)
         fazerCadastro(form)
         limpaCampos()
         irParaFeed(history)
