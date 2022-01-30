@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "97ee8044-fc56-42ed-a725-60b9eb9de181",
+		"name": "IWFS: Sistema Bancário",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teste ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Usuários",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"usuarios"
+					]
+				},
+				"description": "Mostra uma lista com todos os usuários ativos."
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/saldo?cpf=111.222.333-45&nome=Carver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"saldo"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "111.222.333-45"
+						},
+						{
+							"key": "nome",
+							"value": "Carver"
+						}
+					]
+				},
+				"description": "Exibe o saldo atual do usuário. Recebe nome e CPF como parâmetros de busca."
+			},
+			"response": []
+		},
+		{
+			"name": "Criar conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Ruana\",\r\n    \"cpf\": \"018.390.060-05\",\r\n    \"anoNascimento\": 1988\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"usuarios"
+					]
+				},
+				"description": "Cria uma nova conta. Exige body em formato json com nome, cpf e ano de nascimento."
+			},
+			"response": []
+		},
+		{
+			"name": "Fazer depósito",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"deposito\": 1567\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/saldo?nome=Carver&cpf=111.222.333-45",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"saldo"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Carver"
+						},
+						{
+							"key": "cpf",
+							"value": "111.222.333-45"
+						}
+					]
+				},
+				"description": "Permite ao usuário fazer um depósito na sua conta. Exige nome e cpf como parâmetros de busca, e valor do depósito como body."
+			},
+			"response": []
+		}
+	]
+}
