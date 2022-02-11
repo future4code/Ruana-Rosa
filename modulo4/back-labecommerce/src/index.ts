@@ -1,5 +1,10 @@
-import express, { Express } from "express";
-import knex from "knex";
-import cors from "cors";
-import dotenv from "dotenv";
-import { AddressInfo } from "net";
+import app from "./app";
+import createUser from "./endpoints/createUser";
+import getAllProducts from "./endpoints/getAllProducts";
+import getAllUsers from "./endpoints/getAllUsers";
+import registerProduct from "./endpoints/registerProduct";
+
+app.post("/users", createUser)
+app.get("/users", getAllUsers)
+app.post("/products", registerProduct)
+app.get("/products", getAllProducts)
