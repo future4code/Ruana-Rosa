@@ -7,7 +7,7 @@ export default async function getAllProducts(
     res: Response
 ): Promise <void>{
     try{
-    const {name, orderBy, orderType} = req.query 
+    const {name, order, orderType} = req.query 
     const products: product[] = await connection("labecommerce_products")
 
     res.send(products)
