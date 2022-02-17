@@ -1,0 +1,33 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "TesteDois",
+    "email": "teste_dois@test2.com",
+    "password": "234567"
+}
+
+###
+GET http://localhost:3003/users
+###
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Batata",
+    "price": "2.99",
+    "image_url": "https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo_legenda/01325ea5fd7fd4ecab7e209393bf6188.jpg"
+}
+
+###
+GET http://localhost:3003/products
+
+###
+POST http://localhost:3003/purchases
+ontent-Type: application/json
+
+{
+    "user_id": "1644600424196",
+    "product_id": "1644601801982",
+    "quantity": "3"
+}
