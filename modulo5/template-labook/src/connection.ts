@@ -1,7 +1,5 @@
-import express, { Express, Request, Response } from "express"
-import cors from "cors"
-import knex from "knex"
 import dotenv from "dotenv"
+import knex from "knex"
 import Knex from "knex"
 
 dotenv.config()
@@ -17,7 +15,3 @@ export const connection: Knex = knex({
       multipleStatements: true
    }
 })
-
-const app: Express = express()
-app.use(express.json())
-app.use(cors())

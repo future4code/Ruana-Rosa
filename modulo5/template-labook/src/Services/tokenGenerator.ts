@@ -1,4 +1,5 @@
 import * as jwt from "jsonwebtoken"
+import { authenticationData } from "../types"
 
 export function generateToken(
     payload: authenticationData
@@ -10,4 +11,14 @@ export function generateToken(
             expiresIn: process.env.JWT_EXPIRES_IN
         }
     )
+}
+
+export function getTokenData(
+    token: string
+): authenticationData {
+    const result: any = jwt.verify(
+        token,
+        process.env.JWT_KEY as string
+    )
+    return { id: result.id, }
 }

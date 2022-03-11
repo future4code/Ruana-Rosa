@@ -1,4 +1,5 @@
-import { connection } from "./index"
+import { connection } from "./connection";
+
 
 connection
    .raw(`

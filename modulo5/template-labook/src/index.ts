@@ -1,18 +1,10 @@
-import { app } from './app'
-import UserBusiness from './Business/UserBusiness'
-import UserController from './Controller/UserController'
-import UserData from './Data/UserData2'
-import { Authenticator } from './Services/Authenticator'
-import { HashManager } from './Services/HashManager'
-import { IdGenerator } from './Services/IdGenerator'
+import app from "./app";
+import createPost from "./endpoints/createPost";
+import getPostById from "./endpoints/getPostById";
+import login from "./endpoints/login";
+import signUp from "./endpoints/signUp";
 
-const userController = new UserController(
-    new UserBusiness(
-        new UserData(),
-        new IdGenerator(),
-        new HashManager(),
-        new Authenticator()
-    )
-)
-
-app.post("/user/signup", userController.signup)
+app.post('/posts/create', createPost)
+app.get('/posts/:id', getPostById)
+app.post('/users/login', login)
+app.post('/users/signup', signUp)
