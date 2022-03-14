@@ -1,6 +1,5 @@
 import { connection } from "./connection";
 
-
 connection
    .raw(`
       CREATE TABLE IF NOT EXISTS labook_users(
@@ -18,7 +17,14 @@ connection
          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
-      )
+      );
+      
+      CREATE TABLE IF NOT EXISTS labook_friends(
+         user_id VARCHAR(255),
+         friend_id VARCHAR(255),
+         foreign key(user_id) references labook_users(id),
+         foreign key(friend_id) references labook_users(id)
+         );
    `)
    .then(console.log)
    .catch(console.log)
