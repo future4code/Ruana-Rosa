@@ -1,5 +1,5 @@
 import { validateCharacter } from "../src/exercicios/exercicio01";
-
+// EXERCÍCIO 02
 // *a. Crie um teste que verifique o comportamento da função com um personagem com o nome vazio, isto é, `""`.* 
 test("Should return false for empty name", () => {
     const result = validateCharacter({
