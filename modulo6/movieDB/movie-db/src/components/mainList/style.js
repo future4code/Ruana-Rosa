@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const MainList = styled.main`
-width: 100%;
+width: 100vw;
+max-width: 100vw;
 background-color: #fff;
 display: flex;
 justify-content: space-evenly;
@@ -14,7 +15,6 @@ display: flex;
 flex-direction: column;
 gap: 1vw;
 width: 13vw;
-/* height: 320px; */
 margin-top: 24px;
 img{
     width: 100%;
@@ -40,7 +40,16 @@ div{
     color: #646464;
     }
 }
-
+@media screen and (max-device-width : 480px){
+    width: 154.67px;
+    p{
+        font-size: 12px;
+    }
+    h4{
+        font-size: 14px;
+        width: 150px;
+    }
+}
 `
 
 export const Selector = styled.div`
@@ -59,6 +68,9 @@ font-style: normal;
 font-weight: 700;
 font-size: 14px;
 line-height: 24px;
+@media screen and (max-device-width : 480px){
+    padding: 6px;
+}
 `
 
 export const ThisPage = styled.button`

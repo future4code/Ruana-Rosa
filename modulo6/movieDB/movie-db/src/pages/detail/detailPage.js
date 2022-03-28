@@ -2,12 +2,12 @@ import axios from "axios"
 import { useHistory, useParams } from "react-router-dom"
 import { api_key } from "../../constants/api_key"
 import { base_URL } from "../../constants/base_url"
-import { Body, CastCard, CastList, CastTitle, Content, CrewNames, Header, Info, InfoContainer, InfoText, MemberCard, MovieTitle, Overview, RatingCard, RatingContainer, RatingWheel1, RatingWheel2, Recomendations, RecommendationList, Rectangle, SideRating, TextOverview, Top, Trailer } from "./style"
+import { Body, CastCard, CastList, CastTitle, Content, CrewNames, Genres, Header, Info, InfoContainer, InfoText, MemberCard, MovieTitle, Overview, RatingCard, RatingContainer, RatingWheel1, RatingWheel2, RecomendationCard, Recomendations, RecommendationList, Rectangle, SideRating, TextOverview, TitleInfo, Top, Trailer } from "./style"
 import tmdb from '../../img/tmdb-logo.png'
 import { useEffect, useState } from "react"
 import { convertDate, getYear } from "../../hooks/convertDate"
 import { convertTime } from "../../hooks/converTime"
-import { goToMain } from "../../routes/cordinator"
+import { goToDetail, goToMain } from "../../routes/cordinator"
 
 export default function DetailPage() {
     const history = useHistory()
@@ -15,9 +15,7 @@ export default function DetailPage() {
     const [movie, setMovie] = useState({})
     const [crew, setCrew] = useState([])
     const [cast, setCast] = useState([])
-    const [poster, setPoster] = useState()
     const [recommendations, setRecommendations] = useState([])
-    const [videoInfo, setVideoInfo] = useState([])
     const id = history.location.pathname.split('/')[2]
     const [duration, setDuration] = useState()
     const [dateBr, setDateBr] = useState()
@@ -89,44 +87,11 @@ export default function DetailPage() {
             </RatingContainer>
         )
     }
-    // function GetTrailer() {
-    //     const yt_url = 'https://www.youtube.com/watch?v='
-    //     // const vimeo_url = 'https://vimeo.com/'
-    //     axios.get(`${base_URL}/movie/${id}/videos?${api_key}&language=pt-BR`)
-    //         .then((res) => {
-    //             console.log(res.data.results)
-    //             setVideoInfo(res.data.results)
 
-    //             console.log(videoInfo)
+    const clickDetail = (id) => {
+        goToDetail(history, id)
+    }
 
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.response)
-    //         })
-    //     console.log(videoInfo)
-    //     const videoPath = videoInfo[0].key
-    //     // setSite(videoInfo[0].site)
-    //     // console.log(site)
-    //     const trailerOfficial = videoInfo.filter((item) => {
-    //         return (
-    //             item.official === true &&
-    //             item.type === 'Trailer'
-    //         )
-    //     })
-    //     console.log(trailerOfficial)
-    //     const video_url = `${yt_url}${videoPath}`
-    // // if (videoInfo[0].site === "YouTube") {
-    // //     video_url = `${yt_url}${videoPath}`
-    // //     console.log(video_url)
-    // // }
-    // // if (videoInfo[0].site === "Vimeo") {
-    // //     video_url = `${vimeo_url}${videoPath}`
-    // //     console.log(video_url)
-    // // }
-    //     return (
-    //         <iframe src={video_url} />
-    //     )
-    // }
     function GetRecomendations() {
         axios.get(`${base_URL}/movie/${id}/recommendations?${api_key}&language=pt-BR&page=1`)
             .then((res) => {
@@ -139,18 +104,21 @@ export default function DetailPage() {
     const recommendationList = recommendations.map((item) => {
         let dateBr = convertDate(item.release_date)
         return (
-            <CastCard>
+            <RecomendationCard
+                onClick={() => clickDetail(item.id)}
+            >
                 <img
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                     alt={`Poster do filme ${item.name}`}
                 />
                 <div
                     key={item.id}
+
                 >
                     <h3>{item.title}</h3>
                     <p>{dateBr}</p>
                 </div>
-            </CastCard>
+            </RecomendationCard>
         )
     })
 
@@ -170,7 +138,6 @@ export default function DetailPage() {
         getDetails()
         getCredits()
         GetRecomendations()
-        // GetTrailer()
     }, [params.id])
 
     return (
@@ -189,18 +156,18 @@ export default function DetailPage() {
                         alt={`Poster do filme ${movie.title}`}
                     />
                     <InfoContainer>
-                        <div>
+                        <TitleInfo>
                             <MovieTitle>{`${movie.title} (${year})`}</MovieTitle>
                             <Info>
                                 <InfoText> {dateBr} </InfoText>
                                 <InfoText> • </InfoText>
                                 {countries}
                                 <InfoText> • </InfoText>
-                                {genreList}
+                                <Genres>{genreList}</Genres>
                                 <InfoText> • </InfoText>
                                 <InfoText>{duration}</InfoText>
                             </Info>
-                        </div>
+                        </TitleInfo>
                         <RatingCard>
                             {Rating()}
                             <SideRating>Avaliação dos usuários</SideRating>
