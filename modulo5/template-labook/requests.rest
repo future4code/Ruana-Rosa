@@ -1,0 +1,40 @@
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "TesteQuatro",
+    "email": "teste_quatro@test2.com",
+    "password": "963852"
+}
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "teste_dois@test2.com",
+    "password": "234567"
+}
+
+###
+POST http://localhost:3003/posts/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhNGUyNzBhLTM4MWUtNDVlZi04YTMwLWQ1MWRhZTllOGJiYiIsImlhdCI6MTY0NzE5MjU0OCwiZXhwIjoxNjQ3MTkzMTQ4fQ.59YL3nSjPk939XNyQSwxeZ1jsadzxqkAVzngxXYsBOA
+
+{
+    "photo": "https://picsum.photos/200",
+    "description": "Lorem ipsum sit amet",
+    "type": "EVENT"
+}
+
+###
+GET http://localhost:3003/posts/24b30b73-02ad-48a7-9d0e-55439289e2de
+
+###
+GET http://localhost:3003/posts
+
+###
+POST http://localhost:3003/users/6ac6bde2-cfeb-46cb-aabc-d8ac9bc97113
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhNGUyNzBhLTM4MWUtNDVlZi04YTMwLWQ1MWRhZTllOGJiYiIsImlhdCI6MTY0NzE5MzY1NCwiZXhwIjoxNjQ3MTk0MjU0fQ.vE0wWNaUuEh3ld46R-BntFUYZVwDSkL9DMPJYBrONqg
+###
+GET http://localhost:3003/posts?type=normal
