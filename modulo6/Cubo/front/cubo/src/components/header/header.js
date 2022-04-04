@@ -3,20 +3,18 @@ import useForm from "../../hooks/useForm";
 import { Container, Form } from "./style";
 import axios from 'axios'
 
-export default function Header() {
+export default function Header(props) {
     const { form, onChange, cleanFields } = useForm({
         firstName: '',
         lastName: '',
         participation: ''
     })
-    console.log('jsdjsjhs')
     const postData = () => {
         const headers = 'Content-Type: application/json'
         const body = form
         axios.post(baseURL, body, headers)
             .then((res) => {
-                console.log(form)
-
+                props.toUpdate()
             })
             .catch((err) => {
                 console.log(err.message)
@@ -24,7 +22,6 @@ export default function Header() {
     }
     const submitData = (event) => {
         event.preventDefault()
-        console.log(form)
         postData(form)
         cleanFields()
     }

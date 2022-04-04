@@ -9,3 +9,5 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3003/data
+###
+DELETE http://localhost:3003/data/6ca8d9af-ba78-4862-b193-7609e04f3479

@@ -12,20 +12,23 @@ height: 134px;
 `
 
 export const Form = styled.form`
-/* width: 70%; */
 justify-content: space-between;
 display: flex;
 flex-direction: row;
 gap: 20px;
 input{
     height: 50px;
-    width: 255px;
+    width: 230px;
     border: none;
+    padding-left: 25px;
 }
 button{
     width: 132px;
     background-color: #00b8e2;
     border: 1px solid white;
     color: white;
+    :hover{
+        background-color: rgba(184,226,255, 0.5);
+    }
 }
 `
