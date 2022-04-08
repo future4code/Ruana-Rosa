@@ -1,12 +1,15 @@
+import GlobalState from "./context/GlobalState";
 import GlobalStyle from "./globalStyle";
 import HomePage from "./pages/home";
 
 function App() {
   return (
-    <div>
-      <GlobalStyle />
-      <HomePage />
-    </div>
+    <>
+      <GlobalState>
+        <GlobalStyle />
+        <HomePage />
+      </GlobalState>
+    </>
   )
 }
 

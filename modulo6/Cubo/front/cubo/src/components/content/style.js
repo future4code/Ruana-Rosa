@@ -43,6 +43,7 @@ text-align: center;
 `
 export const InfoContainer= styled.section`
 display: flex;
+/* width: 90%; */
 flex-direction: row;
 justify-content: space-between;
 align-items: center;

@@ -1,26 +1,16 @@
 import { Cell, Container, ContentHeader, InfoContainer, Table } from "./style";
 import axios from 'axios'
 import { baseURL } from "../../constants/baseURL";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import del from './../../img/delete.png'
+import { ContentChart } from "../chart/chart";
+import { GlobalContext } from "../../context/GlobalStateContext";
 
-export default function Content(props) {
-    const [parts, setParts] = useState([])
-    const [sum, setSum] = useState(Number())
-    function getData() {
-        axios.get(baseURL)
-            .then((res) => {
-                setParts(res.data.result)
-                setSum(res.data.total)
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
-    }
-    useEffect(() => {
-        getData()
-    }, [props.update])
+export default function Content() {
+    const { parts, setParts, setUpdate, update, sum, setSum } = useContext(GlobalContext)
+
     const ContentTable = () => {
+
         return (
             <Table>
                 <tr>
@@ -30,16 +20,17 @@ export default function Content(props) {
                     <th><b>Participation</b></th>
                     <th></th>
                 </tr>
-                {parts.map((participant) => {
+
+                {parts.length > 0 && parts.map((participant) => {
                     let index = parts.indexOf(participant)
                     let position = index + 1
                     let percentage = ((100 / sum) * participant.participation).toFixed(2)
+                    const id = participant.id
                     function deleteData() {
-                        const id = participant.id
                         axios.delete(`${baseURL}/${id}`)
                             .then((res) => {
                                 alert(`${participant.firstName}'s data has been deleted`)
-                                getData()
+                                setUpdate(update + 1)
                             })
                             .catch((err) => {
                                 console.log(err.response)
@@ -66,11 +57,12 @@ export default function Content(props) {
     return (
         <Container>
             <ContentHeader>
-                <h2>DATA</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h2>CUBO DATA</h2>
+                <p>How much of the total each part represents:</p>
             </ContentHeader>
             <InfoContainer>
                 <ContentTable />
+                <ContentChart />
             </InfoContainer>
         </Container>
     )
