@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalStateContext";
 
 export default function Header() {
-    const { update, setUpdate } = useContext(GlobalContext)
+    const { states, setters } = useContext(GlobalContext)
     const { form, onChange, cleanFields } = useForm({
         firstName: '',
         lastName: '',
@@ -17,7 +17,7 @@ export default function Header() {
         const body = form
         axios.post(baseURL, body, headers)
             .then((res) => {
-                setUpdate(update + 1)
+                setters.setUpdate(states.update + 1)
             })
             .catch((err) => {
                 console.log(err.message)
