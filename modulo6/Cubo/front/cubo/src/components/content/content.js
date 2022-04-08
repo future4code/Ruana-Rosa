@@ -24,19 +24,16 @@ export default function Content() {
                     let percentage = ((100 / states.sum) * participant.participation).toFixed(2)
                     const id = participant.id
                     function deleteData() {
-                        console.log('delete data')
                         axios.delete(`${baseURL}/${id}`)
                             .then((res) => {
                                 alert(`${participant.firstName}'s data has been deleted`)
                                 setters.setUpdate(states.update + 1)
-                                console.log('deletou')
                             })
                             .catch((err) => {
                                 console.log(err.response)
                             })
                     }
                     function toDelete() {
-                        console.log('to delete')
                         if (window.confirm(`Are you sure you want to delete ${participant.firstName}'s data?`)) {
                             deleteData(participant.id)
                         }
