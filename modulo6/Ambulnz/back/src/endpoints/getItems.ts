@@ -1,11 +1,13 @@
-import { Request, Response } from "express";
-import { listOfPizzas } from "../data/pizzas";
-import { Pizza } from "../types/types";
+import { Request, Response } from "express"
+import { connection } from "../connection"
+import { OrderItem } from "../types/types"
 
-export default async function getPizzas(req: Request, res: Response) {
+export default async function getItems(req: Request, res: Response) {
     try {
         let message = "Success"
-        const result: Pizza[] = listOfPizzas
+        const result: OrderItem[] =
+            await connection('pizzeriaItem')
+                .select('*')
         if (!result) {
             res.statusCode = 404
             message = 'Data not found'

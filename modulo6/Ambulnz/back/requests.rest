@@ -1,0 +1,13 @@
+GET http://localhost:3003/api/pizzas
+
+###
+POST http://localhost:3003/api/item
+Content-Type: application/json
+
+{
+    "pizza": "Margherita",
+    "quantity": 1
+}
+
+###
+GET http://localhost:3003/api/item
