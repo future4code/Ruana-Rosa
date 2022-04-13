@@ -2,8 +2,10 @@ POST  http://localhost:3003/products
 Content-Type: application/json
 
     {
-    "name": "VESTIDO TRICOT CHEVRON",
-    "tags": ["balada", "neutro", "delicado", "festa"]
+     "name": "VESTIDO CURTO VELUDO RECORTE GOLA",
+    "tags": ["colorido", "viagem", "delicado", "descolado", "inverno"]
     }
 ###
+GET http://localhost:3003/products/chevron
+
 
