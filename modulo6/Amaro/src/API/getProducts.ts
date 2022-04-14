@@ -14,13 +14,21 @@ export default async function getProducts(req: Request, res: Response): Promise<
         }
         let size = 5;
         let offset = size * (page - 1)
-        const resultDB: responseDB[] = await connection('amaroProducts')
-            .select('*')
-            // .where('name', 'like', `%${name}%`)
-            // .where('tags', 'like', `%${tags}%`)
-            // .where('id', '=', `${id}`)
-            .limit(size)
-            .offset(offset)
+        let resultDB: responseDB[] = []
+        if (!id && !name && !tags) {
+            resultDB = await connection('amaroProducts')
+                .select('*')
+                .limit(size)
+                .offset(offset)
+        } else {
+            resultDB = await connection('amaroProducts')
+                .select('*')
+                .where('name', 'like', `%${name}%`)
+                .orWhere('tags', 'like', `%${tags}%`)
+                .orWhere('id', `${id}`)
+                .limit(size)
+                .offset(offset)
+        }
         if (!resultDB) {
             res.statusCode = 404
             message = 'Data not found'
@@ -31,11 +39,9 @@ export default async function getProducts(req: Request, res: Response): Promise<
                 id: item.id,
                 name: item.name,
                 tags: item.tags.split(',')
-            }
-            )
+            })
         })
-        console.log(result)
-        res.status(200).send({ message, page,  result })
+        res.status(200).send({ message, page, result })
     } catch (error) {
         let message = error.sqlMessage || error.message
         res.statusCode = 400
