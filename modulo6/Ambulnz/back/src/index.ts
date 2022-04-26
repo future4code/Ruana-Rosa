@@ -1,8 +1,8 @@
 import app from "./app";
-import getItems from "./endpoints/getItems";
+import getOrders from "./endpoints/getOrders";
 import getPizzas from "./endpoints/getPizzas";
-import postItem from "./endpoints/postItem";
+import postOrder from "./endpoints/postOrder";
 
 app.get('/api/pizzas', getPizzas)
-app.post('/api/item', postItem)
-app.get('/api/item', getItems)
+app.post('/api/order', postOrder)
+app.get('/api/orders', getOrders)

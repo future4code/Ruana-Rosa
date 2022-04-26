@@ -1,34 +1,36 @@
-import axios from "axios";
 import { useContext, useState } from "react";
-import { baseURL } from "../../constants/baseURL";
 import { GlobalContext } from "../../context/GlobalStateContext";
-import useForm from "../../hooks/useForm";
 import { PizzaCard, PizzaListContainer } from "./style";
 
 export default function PizzaList() {
     const { states, setters } = useContext(GlobalContext)
-    const [quantity, setQuantity] = useState(0)
-    // const { form, onChange, cleanFields } = useForm({
-    //     quantity: 0
-    // })
-
     const pizzaList = states.allPizzas.map((pizza) => {
-        const postItem = () => {
-            let quantity = 1
-            let itemPrice = quantity * pizza.price
-            const headers = 'Content-Type: application/json'
-            const body = {
-                "pizza": pizza.name,
-                "quantity": quantity,
-                "itemPrice": itemPrice
+        function addToCart(pizza) {
+            const addPrice = (price) => {
+                setters.setTotalPrice(states.totalPrice + price)
             }
-            axios.post(`${baseURL}/item`, body, headers)
-                .then((res) => {
-                    console.log(body)
+            const productInCart = states.cart.filter((item) => {
+                if (item.name === pizza.name) {
+                    return item
+                } else {
+                    return false
+                }
+            })
+            if (productInCart.length === 0) {
+                pizza.quantity = 1
+                const newCart = [pizza, ...states.cart]
+                setters.setCart(newCart)
+            } else {
+                const newCart = states.cart.map((item) => {
+                    if (pizza.name === item.name) {
+                        return { ...item, quantity: item.quantity + 1 }
+                    } else {
+                        return item
+                    }
                 })
-                .catch((err) => {
-                    console.log(err.message)
-                })
+                setters.setCart(newCart)
+            }
+            addPrice(pizza.price)
         }
         let pizzaPrice = pizza.price.toFixed(2)
         const ingredientsList = pizza.ingredients.map((item) => {
@@ -36,19 +38,16 @@ export default function PizzaList() {
                 <li>{item} </li>
             )
         })
-        // let quantity = 1
-    
         return (
             <PizzaCard key={pizza.name}>
-                <h2>{pizza.name}</h2>
-                <p>{` $${pizzaPrice} `} </p>
+                <div>
+                    <h2>{pizza.name}</h2>
+                    <p>{` $${pizzaPrice} `} </p>
+                </div>
                 <ul><li>Ingredientes:</li>
                     {ingredientsList}
                 </ul>
-                <div>
-                   
-                    <button onClick={postItem}>Adicionar</button>
-                </div>
+                <button onClick={() => addToCart(pizza)} key={pizza.name}>Adicionar</button>
             </PizzaCard>
         )
     })
@@ -56,16 +55,3 @@ export default function PizzaList() {
         <PizzaListContainer>{pizzaList}</PizzaListContainer>
     )
 }
-
-
-{/* <form onSubmit={postItem}>
-                        <input
-                            placeholder="Quantidade"
-                            name="quantity"
-                            type='number'
-                            value={quantity}
-                            min='1'
-                            max='100'
-                            required
-                        />
-                    </form> */}

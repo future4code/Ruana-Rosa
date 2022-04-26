@@ -4,15 +4,15 @@ export type Pizza = {
     ingredients: string[]
 }
 
-export type OrderItem = {
-    id: string,
-    pizza: string,
-    quantity: number, 
-    itemPrice: number
-}
-
 export type Order = {
     id: string,
-    items: OrderItem[],
+    pizzas: string[],
     totalPrice: number
 }
+
+export type ResultDb = {
+    id: string,
+    pizzas: string,
+    totalPrice: number
+}
+

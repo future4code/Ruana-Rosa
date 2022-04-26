@@ -1,18 +1,25 @@
 import { Request, Response } from "express"
 import { connection } from "../connection"
-import { OrderItem } from "../types/types"
+import { Order, ResultDb } from "../types/types"
 
-export default async function getItems(req: Request, res: Response) {
+export default async function getOrders(req: Request, res: Response) {
     try {
         let message = "Success"
-        const result: OrderItem[] =
-            await connection('pizzeriaItem')
+        const resultDb: ResultDb[] =
+            await connection('pizzeriaOrder')
                 .select('*')
-        if (!result) {
+        if (!resultDb) {
             res.statusCode = 404
             message = 'Data not found'
             throw new Error(message)
         }
+        const result: Order[] = resultDb.map((item) => {
+            return ({
+                id: item.id,
+                pizzas: item.pizzas.split(','),
+                totalPrice: item.totalPrice
+            })
+        })
         res.status(200).send({ message, result })
     } catch (error) {
         let message = error.sqlMessage || error.message

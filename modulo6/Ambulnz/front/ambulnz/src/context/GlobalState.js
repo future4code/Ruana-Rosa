@@ -6,36 +6,36 @@ import { GlobalContext } from "./GlobalStateContext"
 export default function GlobalState(props) {
     const [allPizzas, setAllPizzas] = useState([])
     const [cart, setCart] = useState([])
-
+    const [orders, setOrders] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
 
     function getAllPizzas() {
         axios.get(`${baseURL}/pizzas`)
             .then((res) => {
                 setAllPizzas(res.data.result)
-                console.log(allPizzas)
             })
             .catch((err) => {
                 console.log(err.response)
             })
     }
-    function getItems() {
-        axios.get(`${baseURL}/item`)
+
+    function getAllOrders() {
+        axios.get(`${baseURL}/orders`)
             .then((res) => {
-                setCart(res.data.result)
-                console.log(res.data)
-                console.log(cart)
+                setOrders(res.data.result)
             })
             .catch((err) => {
                 console.log(err.response)
             })
     }
+
     useEffect(() => {
         getAllPizzas(`${baseURL}/pizzas`)
-        getItems(`${baseURL}/item`)
+        getAllOrders(`${baseURL}/orders`)
     }, [])
 
-    const states = { allPizzas, cart }
-    const setters = { setAllPizzas, setCart }
+    const states = { allPizzas, cart, totalPrice, orders }
+    const setters = { setAllPizzas, setCart, setTotalPrice }
     return (
         <GlobalContext.Provider value={{ states, setters }}>
             {props.children}

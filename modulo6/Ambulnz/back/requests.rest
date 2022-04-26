@@ -1,13 +1,13 @@
 GET http://localhost:3003/api/pizzas
 
 ###
-POST http://localhost:3003/api/item
+POST http://localhost:3003/api/order
 Content-Type: application/json
 
 {
-    "pizza": "Margherita",
-    "quantity": 1
+    "pizzas": ["Margherita", "Bufala"],
+    "totalPrice": 11
 }
 
 ###
-GET http://localhost:3003/api/item
+GET http://localhost:3003/api/orders
