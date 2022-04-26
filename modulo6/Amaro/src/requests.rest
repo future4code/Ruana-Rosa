@@ -1,0 +1,19 @@
+POST  http://localhost:3003/products
+Content-Type: application/json
+
+{
+"name": "MOCHILA PARA NOTEBOOK",
+"tags": ["mochila", "couro", "trabalho"]
+}
+
+###
+GET http://localhost:3003/products
+
+###
+GET http://localhost:3003/products?name=chevron
+
+###
+GET http://localhost:3003/products?id=dfb714d5-124d-4d85-96ee-c68ec968adf4
+
+###
+GET http://localhost:3003/products?tags=delicado
